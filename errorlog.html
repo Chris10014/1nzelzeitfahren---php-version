@@ -1,0 +1,323 @@
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Feb 27, 2021 21:24PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`einzelzeitfahren`.`users`, CONSTRAINT `fk_user_team1` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)</p>
+
+         <p><strong>Code:</strong> 23000</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 84</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(84): PDOStatement->execute()
+#1 C:\xampp\htdocs\einzelzeitfahren\models\users_model.php(65): Database->update('users', Array, Array)
+#2 C:\xampp\htdocs\einzelzeitfahren\controllers\registration.php(120): Users_Model->updateColumns(Array, Array)
+#3 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(81): Registration->update()
+#4 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(28): Bootstrap->_callControllerMethod()
+#5 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#6 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Feb 27, 2021 18:37PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'first_name' in 'field list'</p>
+
+         <p><strong>Code:</strong> 42S22</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 43</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(43): PDOStatement->execute()
+#1 C:\xampp\htdocs\einzelzeitfahren\models\users_have_events_model.php(15): Database->insert('users_have_even...', Array)
+#2 C:\xampp\htdocs\einzelzeitfahren\controllers\registration.php(129): Users_have_events_Model->insert(Array)
+#3 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(81): Registration->update()
+#4 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(28): Bootstrap->_callControllerMethod()
+#5 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#6 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Feb 27, 2021 18:33PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'first_name' in 'field list'</p>
+
+         <p><strong>Code:</strong> 42S22</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 43</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(43): PDOStatement->execute()
+#1 C:\xampp\htdocs\einzelzeitfahren\models\users_have_events_model.php(15): Database->insert('users_have_even...', Array)
+#2 C:\xampp\htdocs\einzelzeitfahren\controllers\registration.php(129): Users_have_events_Model->insert(Array)
+#3 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(81): Registration->update()
+#4 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(28): Bootstrap->_callControllerMethod()
+#5 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#6 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Feb 27, 2021 18:32PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'confirmed_terms_and_conditions_at' in 'field list'</p>
+
+         <p><strong>Code:</strong> 42S22</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 43</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(43): PDOStatement->execute()
+#1 C:\xampp\htdocs\einzelzeitfahren\models\users_have_events_model.php(15): Database->insert('users_have_even...', Array)
+#2 C:\xampp\htdocs\einzelzeitfahren\controllers\registration.php(129): Users_have_events_Model->insert(Array)
+#3 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(81): Registration->update()
+#4 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(28): Bootstrap->_callControllerMethod()
+#5 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#6 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Feb 26, 2021 18:10PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'event_id' in 'where clause'</p>
+
+         <p><strong>Code:</strong> 42S22</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 22</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(22): PDOStatement->execute()
+#1 C:\xampp\htdocs\einzelzeitfahren\models\events_model.php(21): Database->select('SELECT * FROM e...', Array)
+#2 C:\xampp\htdocs\einzelzeitfahren\controllers\registration.php(49): Events_Model->event('1')
+#3 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(81): Registration->edit('1', '1')
+#4 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(28): Bootstrap->_callControllerMethod()
+#5 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#6 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Feb 21, 2021 14:54PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[HY093]: Invalid parameter number: Columns/Parameters are 1-based</p>
+
+         <p><strong>Code:</strong> HY093</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 19</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(19): PDOStatement->bindValue('0', Array)
+#1 C:\xampp\htdocs\einzelzeitfahren\models\users_model.php(57): Database->select('SELECT * FROM u...', Array)
+#2 C:\xampp\htdocs\einzelzeitfahren\controllers\registration.php(114): Users_Model->findByRegCode('4765')
+#3 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(81): Registration->validateRegCode()
+#4 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(28): Bootstrap->_callControllerMethod()
+#5 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#6 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Feb 18, 2021 18:12PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '= ema@email.deLIMIT 1' at line 1</p>
+
+         <p><strong>Code:</strong> 42000</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 22</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(22): PDOStatement->execute()
+#1 C:\xampp\htdocs\einzelzeitfahren\models\registration_model.php(17): Database->select('SELECT * FROM u...')
+#2 C:\xampp\htdocs\einzelzeitfahren\controllers\registration.php(35): Registration_Model->findEmail('ema@email.de')
+#3 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(81): Registration->isEmailAllowed()
+#4 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(28): Bootstrap->_callControllerMethod()
+#5 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#6 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Feb 17, 2021 22:11PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'einzelzeitfahren.products' doesn't exist</p>
+
+         <p><strong>Code:</strong> 42S02</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 22</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(22): PDOStatement->execute()
+#1 C:\xampp\htdocs\einzelzeitfahren\models\products_model.php(14): Database->select('SELECT * FROM p...')
+#2 C:\xampp\htdocs\einzelzeitfahren\controllers\products.php(11): Products_Model->all()
+#3 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(41): Products->index()
+#4 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(23): Bootstrap->_loadDefaultController()
+#5 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#6 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Feb 17, 2021 20:40PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'einzelzeitfahren.products' doesn't exist</p>
+
+         <p><strong>Code:</strong> 42S02</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 22</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(22): PDOStatement->execute()
+#1 C:\xampp\htdocs\einzelzeitfahren\models\products_model.php(14): Database->select('SELECT * FROM p...')
+#2 C:\xampp\htdocs\einzelzeitfahren\controllers\products.php(11): Products_Model->all()
+#3 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(41): Products->index()
+#4 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(23): Bootstrap->_loadDefaultController()
+#5 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#6 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Feb 17, 2021 20:38PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'einzelzeitfahren.products' doesn't exist</p>
+
+         <p><strong>Code:</strong> 42S02</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 22</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(22): PDOStatement->execute()
+#1 C:\xampp\htdocs\einzelzeitfahren\models\products_model.php(14): Database->select('SELECT * FROM p...')
+#2 C:\xampp\htdocs\einzelzeitfahren\controllers\products.php(11): Products_Model->all()
+#3 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(41): Products->index()
+#4 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(23): Bootstrap->_loadDefaultController()
+#5 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#6 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Feb 16, 2021 16:53PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)</p>
+
+         <p><strong>Code:</strong> 1045</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 7</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(7): PDO->__construct('mysql:host=loca...', 'root', 'root')
+#1 C:\xampp\htdocs\einzelzeitfahren\core\model.php(9): Database->__construct()
+#2 C:\xampp\htdocs\einzelzeitfahren\models\products_model.php(6): Model->__construct()
+#3 C:\xampp\htdocs\einzelzeitfahren\core\controller.php(18): Products_Model->__construct()
+#4 C:\xampp\htdocs\einzelzeitfahren\controllers\products.php(6): Controller->__construct()
+#5 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(40): Products->__construct()
+#6 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(23): Bootstrap->_loadDefaultController()
+#7 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#8 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Feb 16, 2021 16:53PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)</p>
+
+         <p><strong>Code:</strong> 1045</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 7</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(7): PDO->__construct('mysql:host=loca...', 'root', 'root')
+#1 C:\xampp\htdocs\einzelzeitfahren\core\model.php(9): Database->__construct()
+#2 C:\xampp\htdocs\einzelzeitfahren\models\products_model.php(6): Model->__construct()
+#3 C:\xampp\htdocs\einzelzeitfahren\core\controller.php(18): Products_Model->__construct()
+#4 C:\xampp\htdocs\einzelzeitfahren\controllers\products.php(6): Controller->__construct()
+#5 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(40): Products->__construct()
+#6 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(23): Bootstrap->_loadDefaultController()
+#7 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#8 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Feb 16, 2021 16:53PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)</p>
+
+         <p><strong>Code:</strong> 1045</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 7</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(7): PDO->__construct('mysql:host=loca...', 'root', 'root')
+#1 C:\xampp\htdocs\einzelzeitfahren\core\model.php(9): Database->__construct()
+#2 C:\xampp\htdocs\einzelzeitfahren\models\products_model.php(6): Model->__construct()
+#3 C:\xampp\htdocs\einzelzeitfahren\core\controller.php(18): Products_Model->__construct()
+#4 C:\xampp\htdocs\einzelzeitfahren\controllers\products.php(6): Controller->__construct()
+#5 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(40): Products->__construct()
+#6 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(23): Bootstrap->_loadDefaultController()
+#7 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#8 {main}</pre>
+
+         <hr />
+<p>Error on May 23, 2014 10:35AM - require(views/error/default.php): failed to open stream: No such file or directory in /Users/maxbeier/Sites/Simple-MVC/helpers/url.php on line 79</p>
+
+<p>Error on May 23, 2014 10:40AM - Missing argument 2 for URL::redirect(), called in /Users/maxbeier/Sites/Simple-MVC/controllers/products.php on line 10 and defined in /Users/maxbeier/Sites/Simple-MVC/helpers/url.php on line 57</p>
+
+<p>Error on May 23, 2014 10:40AM - Missing argument 2 for URL::redirect(), called in /Users/maxbeier/Sites/Simple-MVC/controllers/products.php on line 10 and defined in /Users/maxbeier/Sites/Simple-MVC/helpers/url.php on line 57</p>
+
+<p>Error on Feb 17, 2021 22:36PM - require(views/registration.php): failed to open stream: No such file or directory in C:\xampp\htdocs\einzelzeitfahren\core\view.php on line 6</p>
+
+<p>Error on Feb 17, 2021 22:36PM - require(views/registration.php): failed to open stream: No such file or directory in C:\xampp\htdocs\einzelzeitfahren\core\view.php on line 6</p>
+
+<p>Error on Feb 17, 2021 22:36PM - require(views/registration/.php): failed to open stream: No such file or directory in C:\xampp\htdocs\einzelzeitfahren\core\view.php on line 6</p>
+
+<p>Error on Feb 17, 2021 22:36PM - require(views/registration/.php): failed to open stream: No such file or directory in C:\xampp\htdocs\einzelzeitfahren\core\view.php on line 6</p>
+
+<p>Error on Feb 20, 2021 16:18PM - Creating default object from empty value in C:\xampp\htdocs\einzelzeitfahren\controllers\registration.php on line 15</p>
+
+<p>Error on Feb 20, 2021 16:18PM - Creating default object from empty value in C:\xampp\htdocs\einzelzeitfahren\controllers\registration.php on line 15</p>
+
