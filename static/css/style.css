@@ -7,6 +7,18 @@ body {
    background-color: #343a40;
 }
 
+section, nav {
+   margin-bottom: 3%;
+}
+
+img {
+   margin-bottom: 3%;
+}
+
+h1, h2 {
+   margin-bottom: 1%;
+}
+
 header, main, footer {
   color: #ffffff;
 }
@@ -16,10 +28,19 @@ header, main, footer {
 }
 
 nav.navbar-dark {
-background-color: #343a40;
+    background-color: #343a40;
 }
 
-img { max-width: 100%; }
+nav a:hover {
+   color: #000000;
+   background-color: rgb(199, 195, 195);
+   border-radius: 5%;
+   
+}
+
+img { 
+   max-width: 100%; 
+}
 
 
 .panel {
@@ -61,3 +82,4 @@ img { max-width: 100%; }
   font-size: 2em;
   text-align: center;
 }
+

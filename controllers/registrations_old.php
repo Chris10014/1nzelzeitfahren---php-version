@@ -1,4 +1,5 @@
 <?php
+
 require('models/users_model.php');
 require('models/events_model.php');
 require('models/teams_model.php');
@@ -13,13 +14,13 @@ class Registration extends Controller
 
     public function index($event_id = 1) 
     {
-        $_SESSION['eventId'] = $event_id;
+        echo "hi"; exit;
+        $_SESSION['eventId'] = $event_id;        
 
         $data['title'] = "Anmeldung";
         $this->_view->render('header', $data);
         $this->_view->render('registration/index');
         $this->_view->render('footer');
-        
 
     }
 
@@ -33,19 +34,11 @@ class Registration extends Controller
         echo "store registration controller";
     }
 
-    public function show($userId, $eventDateId)
+    public function show($email)
     {
-        $newUser = new Users_Model();
-        $reg = $newUser->registration($userId, $eventDateId);
-
-        $date['title'] = "Anmeldung";
-        $data['registration'] = $reg;
-
-        $this->_view->render('header', $data);
-        $this->_view->render('registration/show', $data);
-        $this->_view->render('footer');
+        echo "show registration controller: " . $email . "!";
     }
-   
+
     public function edit($user_id, $event_id)
     {
         if (isset($_POST['cancel'])) {
@@ -60,7 +53,7 @@ class Registration extends Controller
         $date = $newEvent->eventDateWithRegistration($event_id);
         $event = $newEvent->event($event_id);
 
-        if(count($newUser->registration($_SESSION['userId'], $date['id'])) > 0) {
+        if($newUser->isUserRegistered($_SESSION['userId'], $date['id']) == true) {
             
             Message::set("Du bist schon angemeldet.", "info");           
             header("Location:" . DIR . "registration/index/" . $_SESSION['eventId']);
@@ -98,17 +91,12 @@ class Registration extends Controller
        
         $data = self::validateRegData($_REQUEST);
 
-        if($data == false) {
-            header("Location: " . DIR . "registration/edit/" . $_SESSION['userId'] . "/" . $_SESSION['eventId']);
-            return;
-        }
-
         // Find team id
         if (isset($_REQUEST['team']) && strlen($_REQUEST['team']) > 0) {
 
             $newTeam = new Teams_Model();
             $team = $newTeam->getTeamByName($_REQUEST['team']);
-            if ($team !== false) {
+            if ($team != false) {
                 $teamId = $team['id'];
             } else {
                 $teamId = $newTeam->insert($_REQUEST['team']);
@@ -147,9 +135,9 @@ class Registration extends Controller
         $activity = $newActivity->insert($data);
         
         if(isset($activity)) {
-            unset($_SESSION['oldRequest']);            
-            header("Location:" . DIR . "registration/show/" . $_SESSION["userId"] . "/" .  $_SESSION['eventDateId']);
-            return;
+            unset($_SESSION['oldRequest']);
+            header("Location:" . DIR . "events/participants/" . $_SESSION['eventDateId']);
+            echo "success";
         } else {
             Message::set("Etwas ging schief.", "danger");
             session_destroy();
@@ -212,9 +200,6 @@ class Registration extends Controller
                 // todo: send email with regCode
                 $_SESSION['regCode'] = $regCode; // for test only
 
-                $txt = "Dein Registrierungscode für die Anmeldung zum 1nzelzeitfahren (Training): <strong>" . $regCode . "</strong>";
-                Utils::sendMail($_SESSION["email"], $txt);
-
                 header("Location: " . DIR ."registration/index/" . $_SESSION['eventId']);
                 return;
             }
@@ -261,7 +246,7 @@ class Registration extends Controller
         }
     }
 
-    public function updateRegCode($hashedRegCode)
+    public static function updateRegCode($hashedRegCode)
     {
         $data = ["reg_code" => $hashedRegCode];
         $where = ["id" => $_SESSION['userId'], "email" => $_SESSION['email']];
@@ -269,48 +254,41 @@ class Registration extends Controller
         return (new Users_Model())->updateColumns($data, $where);
     }
 
-    public function validateRegData($data) 
+    public static function validateRegData($data) 
     {
-        
-        if (!isset($data['participant']) && !isset($data['support'])) {
+        if (!isset($data['participant']) && !isset($data['supporter']) ) {
             Message::set('Bitte gebe an ob Du als Fahrer:in und / oder als Helfer:in mitmachen möchtest.', 'warning');
-            return false;
+            header("Location: " . DIR . "registration/edit/" . $_SESSION['userId'] . "/" . $_SESSION['eventId']);
+            return;
         }
         if(!isset($data['first_name']) || strlen($data['first_name']) < 1) {
             Message::set('Bitte Vorname eingeben', 'warning');
-            return false;
-        } 
+            header("Location: " . DIR ."registration/edit/" . $_SESSION['userId'] . "/" . $_SESSION['eventId']);
+            return;
+        }
         if (!isset($data['name']) || strlen($data['name']) < 1) {
             Message::set('Bitte Nachname eingeben', 'warning');
-            return false;
-        } 
+            header("Location: " . DIR . "registration/edit/" . $_SESSION['userId'] . "/" . $_SESSION['eventId']);
+            return;
+        }
         if (!isset($data['yearOfBirth']) || !is_numeric($data['yearOfBirth'])) {
             Message::set('Bitte Jahrgang eintragen', 'warning');
-            return false;
-        } elseif (!isset($data['termsAndConditions']) || $data['termsAndConditions'] != "confirmed") {
+            header("Location: " . DIR . "registration/edit/" . $_SESSION['userId'] . "/" . $_SESSION['eventId']);
+            return;
+        }
+        if (!isset($data['termsAndConditions']) || $data['termsAndConditions'] != "confirmed") {
             Message::set('Bitte Verzichtserklärung und Haftungsfreistellung akzeptieren.', 'warning');
-            return false;
-        } 
+            header("Location: " . DIR . "registration/edit/" . $_SESSION['userId'] . "/" . $_SESSION['eventId']);
+            return;
+        }
         if (!isset($data['raceInfo']) || $data['raceInfo'] != "confirmed") {
             Message::set('Bitte bestätige, dass Du die Infounterlage gelesen hast.', 'warning');
-            return false;
-        }         
+            header("Location: " . DIR . "registration/edit/" . $_SESSION['userId'] . "/" . $_SESSION['eventId']);
+            return;
+        }
+
         return $data;
     }
 
-    /**
-     * generate an array with team names for jQuers autocomplete
-     * @param str search string from input field #team
-     * @return echo array() with team names
-     */
-
-    public static function autocompleteForTeams()
-    {
-        $res = (new Teams_Model())->searchTeams($_REQUEST['term']);
-        $teamNames = array();
-        foreach ($res as $team) {
-            $teamNames[] = $team['name'];
-        }
-        echo (json_encode($teamNames, JSON_PRETTY_PRINT));
-    }
 }
+?>

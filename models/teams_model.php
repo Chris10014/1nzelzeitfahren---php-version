@@ -26,11 +26,31 @@ class Teams_Model extends Model
         }
     }
 
+    /**
+     * inserst new team into db
+     * @param str $team_name team name
+     * @return int last inserted id (team_id)
+     */
     public function insert($team_name)
     {
         $data = array("name" => $team_name);
+        
         return $this->_db->insert("teams", $data);
     }
+
+
+    /**
+     * searchs for teams with search string in the team name
+     * @param str $str search string
+     * @return array() array with teams
+     */
+    public function searchTeams($str)
+    {
+        $prepared_sql = "SELECT name FROM teams WHERE name like :na";
+        $data = array(":na" => "%" . $str . "%");
+
+        return $this->_db->select($prepared_sql, $data);        
+    }     
 
 }
 ?>

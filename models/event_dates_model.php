@@ -26,3 +26,12 @@ class Event_dates_Model extends Model
 
         return $this->_db->select($prepared_sql, $data);
     }
+
+    public function participants($event_date_id) 
+    {
+        $prepared_sql = "SELECT * FROM users_have_events JOIN users ON users.id = users_have_events.user_id WHERE event_date_id = :edid";
+        $data = array(":edid" => $event_date_id);
+
+        return $this->_db->select($prepared_sql, $data);
+    }
+}

@@ -84,27 +84,26 @@ class Users_Model extends Model
     }
 
     /**
-     * Finds if a user is already registered for an event date
+     * Searches if a user is already registered for an event
      * @param  int $user_id  user id
      * @param int $event_date_id
-     * @return boolean true or false
+     * @return array event 
      */
-    public function isUserRegistered($user_id, $event_date_id)
+    public function registration($user_id, $event_date_id)
     {
-        $prepared_sql = "SELECT * FROM users_have_events WHERE user_id = :uid AND event_date_id = :edid LIMIT 1";
+        $prepared_sql = "SELECT *, u.name AS last_name, e.name AS event_name, t.name AS team_name FROM users_have_events AS uhe
+        JOIN users AS u ON u.id = uhe.user_id 
+        LEFT JOIN teams AS t ON t.id = u.team_id
+        JOIN event_dates AS ed ON ed.id = uhe.event_date_id
+        JOIN events AS e ON e.id = ed.event_id
+        WHERE user_id = :uid AND event_date_id = :edid LIMIT 1";
         $data = array(
             ":uid" => $user_id, 
             ":edid" => $event_date_id
         );
 
-        $res = $this->_db->select($prepared_sql, $data);
-        if (count($res) == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->_db->select($prepared_sql, $data)[0];
     }
-
 
     
 }
