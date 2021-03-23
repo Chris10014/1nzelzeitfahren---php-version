@@ -27,6 +27,7 @@ class Events extends Controller
     {
         $data['title'] = 'Teilnehmer';
         $data['event'] = $this->_model->event($event_date_id);
+        $data['participants'] = $this->_model->participants($event_date_id);
         $data['participantsM'] = $this->_model->participants($event_date_id, "M");
         $data['participantsW'] = $this->_model->participants($event_date_id, "W");
         $data['participantsD'] = $this->_model->participants($event_date_id, "D");

@@ -67,6 +67,7 @@ class Utils
 
     public static function sendMail($to, $txt)
     {
+        
        
         $subject = "1zF Registrierungscode";
        
@@ -76,7 +77,7 @@ class Utils
 
         // use wordwrap() if lines are longer than 70 characters
         $txt = wordwrap($txt, 70);
-
+        
         mail($to, $subject, $txt, $headers);
     }
 }

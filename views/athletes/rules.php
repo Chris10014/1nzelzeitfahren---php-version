@@ -45,7 +45,7 @@
         <h2>Ort und Zeit</h2>
         <p>
             Datum: 30.05.2021<br>
-            Start: erster Start erfolgt um 8:00h (Änderungen vorbehalten)<br>
+            Start: erster Start erfolgt um 8:00h (Änderungen vorbehalten). Weitere Startzeiten bitte der Teilnehmerliste entnehmen.<br>
             Ort: Ortsausgang Vockenhausen in Richtung Ehlhalten<br><br>
             Gemeinsames Frühstück am Anschluss (auf eigene Rechnung).
         </p>

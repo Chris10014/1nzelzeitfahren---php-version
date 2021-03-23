@@ -60,8 +60,8 @@ class Events_Model extends Model
         FROM users_have_events AS e
         JOIN users AS u ON u.id = e.user_id 
         LEFT JOIN teams AS t ON u.team_id = t.id
-        WHERE e.event_date_id = :edid AND e.participant = :yes AND u.gender = :gen
-        ORDER BY gender ASC, estimated_finish_time ASC, last_name ASC";
+        WHERE e.event_date_id = :edid AND e.participant = :yes AND u.gender LIKE :gen
+        ORDER BY gender ASC, number ASC, ISNULL(estimated_finish_time), estimated_finish_time ASC, last_name ASC";
         $data = array(":edid" => $event_date_id, ":yes" => 1, ":gen" => $gender);
 
         return $this->_db->select($prepared_sql, $data);
@@ -100,7 +100,7 @@ class Events_Model extends Model
         JOIN users AS u ON u.id = e.user_id 
         LEFT JOIN teams AS t ON u.team_id = t.id
         WHERE e.event_date_id = :edid AND e.participant = :yes AND u.gender = :gen
-        ORDER BY gender ASC, netto_finish_time ASC, last_name ASC";
+        ORDER BY gender ASC, ISNULL(netto_finish_time), netto_finish_time ASC, last_name ASC";
         $data = array(":edid" => $event_date_id, ":yes" => 1, ":gen" => $gender);
 
         return $this->_db->select($prepared_sql, $data);
