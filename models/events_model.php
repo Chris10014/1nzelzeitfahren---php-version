@@ -28,7 +28,7 @@ class Events_Model extends Model
     }
 
     /**
-     * Selects event dates where rgistration either is open (by default) or closed
+     * Selects event dates where registration either is open (by default) or closed
      * 
      * @param  int $event_id  id of the event
      * @param  boolean optional: $reg_open 1 for open reg (default), 0 for closed reg
@@ -68,7 +68,7 @@ class Events_Model extends Model
     }
 
     /**
-     * Selects suppertes of an event date
+     * Selects supporters of an event date
      * 
      * @param  int $event_date_id  id of the event date 
      * @return array of all suppotes ordered by last name
@@ -91,17 +91,39 @@ class Events_Model extends Model
      * 
      * @param int $event_date_id  id of the event date 
      * @param str $gender optional M, W, O  default: all
+     * @param str $team_name optional name of a team, as default searches for all team names 
      * @return array of all participants ordered by finishtime
      */
-    public function results($event_date_id, $gender = "%")
+    public function results($event_date_id, $gender = "%", $team_name = "%")
     {
         $prepared_sql = "SELECT *, u.name AS last_name, t.name AS team_name
         FROM users_have_events AS e
         JOIN users AS u ON u.id = e.user_id 
         LEFT JOIN teams AS t ON u.team_id = t.id
-        WHERE e.event_date_id = :edid AND e.participant = :yes AND u.gender = :gen
-        ORDER BY gender ASC, ISNULL(netto_finish_time), netto_finish_time ASC, last_name ASC";
-        $data = array(":edid" => $event_date_id, ":yes" => 1, ":gen" => $gender);
+        WHERE e.event_date_id = :edid AND e.participant = :yes AND u.gender = :gen AND IFNULL(t.name, ' ') LIKE :team
+        ORDER BY gender ASC, ISNULL(netto_finish_time), netto_finish_time ASC, last_name ASC"; // ISNULL() sorts netto_finish_times == null at the end of the list
+        $data = array(":edid" => $event_date_id, ":yes" => 1, ":gen" => $gender, ":team" => "%" . $team_name);
+
+        return $this->_db->select($prepared_sql, $data);
+    }
+
+    /**
+     * Selects different teams which participate in an event
+     * 
+     * @param int $event_date_id  id of the event date 
+     *
+     * @return array of all team names dictinct
+     */
+    public function teamNames($event_date_id)
+    {
+        $prepared_sql = "SELECT DISTINCT t.name AS team_name
+        FROM users_have_events AS e
+        JOIN users AS u ON u.id = e.user_id 
+        LEFT JOIN teams AS t ON u.team_id = t.id
+        WHERE e.event_date_id = :edid AND e.participant = :yes
+        ORDER BY team_name ASC";
+
+        $data = array(":edid" => $event_date_id, ":yes" => 1);
 
         return $this->_db->select($prepared_sql, $data);
     }

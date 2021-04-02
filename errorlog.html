@@ -1,5 +1,28 @@
 <h3>Exception information:</h3>
 
+         <p><strong>Date:</strong> Mar 27, 2021 17:22PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42000]: Syntax error or access violation: 1582 Incorrect parameter count in the call to native function 'IFNULL'</p>
+
+         <p><strong>Code:</strong> 42000</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 22</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(22): PDOStatement->execute()
+#1 C:\xampp\htdocs\einzelzeitfahren\models\events_model.php(106): Database->select('SELECT *, u.nam...', Array)
+#2 C:\xampp\htdocs\einzelzeitfahren\controllers\events.php(45): Events_Model->results('1', 'M')
+#3 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(81): Events->results('1')
+#4 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(28): Bootstrap->_callControllerMethod()
+#5 C:\xampp\htdocs\einzelzeitfahren\index.php(39): Bootstrap->init()
+#6 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
          <p><strong>Date:</strong> Mar 23, 2021 13:44PM</p>
 
          <p><strong>Message:</strong> SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'IS NOT NULL(netto_finish_time), netto_finish_time ASC, last_name ASC' at line 6</p>

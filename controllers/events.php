@@ -40,16 +40,34 @@ class Events extends Controller
 
     public function results($event_date_id)
     {
-        $data['title'] = 'Teilnehmer';
+        $data['title'] = 'Ergebnisse';
         $data['event'] = $this->_model->event($event_date_id);
         $data['resultsM'] = $this->_model->results($event_date_id, "M");
         $data['resultsW'] = $this->_model->results($event_date_id, "W");
         $data['resultsD'] = $this->_model->results($event_date_id, "D");
         $data['supporter'] = $this->_model->supporter($event_date_id);
+        $data['teamNames'] = $this->_model->teamNames($event_date_id);
 
         $this->_view->render('header', $data);
         $this->_view->render('events/results', $data);
         $this->_view->render('footer');
+    }
+
+    public function resultsPerTeam($event_date_id, $team_name = "%")
+    {
+        $data['title'] = 'Ergebnisse';
+        $data['event'] = $this->_model->event($event_date_id);
+        $data['resultsM'] = $this->_model->results($event_date_id, "M", $team_name);
+        $data['resultsW'] = $this->_model->results($event_date_id,"W", $team_name);
+        $data['resultsD'] = $this->_model->results($event_date_id,"D", $team_name);
+        $data['teamNames'] = $this->_model->teamNames($event_date_id);
+        $data['gender'] = GENDER;
+
+        if(count($data['resultsM']) == 0 && count($data['resultsW']) == 0 && count($data['resultsD']) == 0){
+            echo false;
+        } else {
+            echo json_encode($data);
+        }
     }
 
 }

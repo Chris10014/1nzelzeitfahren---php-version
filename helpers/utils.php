@@ -39,6 +39,12 @@ class Utils
         } 
     }
 
+    /**
+     * Berechnet die Altersklasse auf Basis des Geburtsjahres
+     * @param int $yearOfBirth Geburtsjahrgang
+     * @param int $grid Jahreszuschnitt der Alterklassen. Übernimmt die const AGEGROUPS aus der config.php
+     * @return int Alterklasse 
+     */
     public static function ageGroup($yearOfBirth, $grid = AGEGROUPS)
     {
         $age = date('Y') - $yearOfBirth;
@@ -50,6 +56,12 @@ class Utils
         }
     }
 
+    /**
+     * Ermittelt die Geschlechterbezeichnung voll ausgeschrieben
+     * @param str $gender Abkürzung des Geschlechts (M, W oder D)
+     * @param int $grid Jahreszuschnitt der Alterklassen. Übernimmt die const AGEGROUPS aus der config.php
+     * @return str Geschlechterbezeichnung voll ausgeschrieben (Männer, Frauen, Diverse)
+     */
     public static function fullGender($gender)
     {
         switch ($gender) {
@@ -65,10 +77,14 @@ class Utils
         }
     }
 
+    /**
+     * Verschickt ein E-Mail
+     * @param str $to E-Mail Adresse des Empfängers
+     * @param str $txt Inhaltstext der E-Mail
+     * @return versendet E-Mail
+     */
     public static function sendMail($to, $txt)
     {
-        
-       
         $subject = "1zF Registrierungscode";
        
         $headers  = "MIME-Version: 1.0\r\n";
