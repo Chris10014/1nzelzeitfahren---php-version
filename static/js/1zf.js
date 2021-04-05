@@ -2,15 +2,40 @@ function test(str = 'test') {
     alert('test function works: ' + str);
     console.log("test function works: " + str);
 }
-// Window load event used just in case window height is dependant upon images
+// sticky footer
 $(document).ready(function () {
-  var docHeight = $(window).height();
-  var footerHeight = $("#footer").height();
-  var footerTop = $("#footer").position().top + footerHeight;
-  if (footerTop < docHeight) {
-    $("#footer").css("margin-top", 10 + (docHeight - footerTop) + "px");
-  }
+  var viewportHeight = $(window).height();
+    var bodyHeight = $("#body").height();;
+    var footerHeight = $('#footer').height();
+
+    if (bodyHeight + footerHeight < viewportHeight) {
+      $("#footer").addClass("fixed-bottom");
+    } else {
+      $("#footer").removeClass("fixed-bottom");
+    }
+
 });
+
+  $(window).resize(function () {
+    var viewportHeight = $(window).height();
+    var bodyHeight = $("#body").height();;
+    var footerHeight = $('#footer').height();
+
+    if (bodyHeight + footerHeight < viewportHeight) {
+      $("#footer").addClass("fixed-bottom");
+    } else {
+      $("#footer").removeClass("fixed-bottom");
+    }
+    console.log(
+      "window height: " +
+        viewportHeight +
+        " body height: " +
+        bodyHeight +
+        " footer height: " +
+        footerHeight
+    );
+  });
+
 
 
 

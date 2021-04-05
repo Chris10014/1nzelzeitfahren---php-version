@@ -11,12 +11,12 @@ section, nav {
    margin-bottom: 3%;
 }
 
-#footer {
-   height: 20px;
-}
-
 img {
    margin-bottom: 3%;
+}
+
+.no-margin-bottom {
+   margin-bottom: 0;
 }
 
 h1, h2 {
