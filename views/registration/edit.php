@@ -11,22 +11,22 @@ if ($_SESSION['oldRequest']) {
     $name = htmlentities($_SESSION['oldRequest']['name']);
     $yearOfBirth = htmlentities($_SESSION['oldRequest']['yearOfBirth']);
     $team =  htmlentities($_SESSION['oldRequest']['team']);
-    $participant = $_SESSION['oldRequest']['participant'] ?? "";
-    $support = $_SESSION['oldRequest']['support'] ?? "";
+    $participant = $_SESSION['oldRequest']['participant'] ? $_SESSION['oldRequest']['participant'] : "";
+    $support = $_SESSION['oldRequest']['support'] ?  $_SESSION['oldRequest']['support'] : "";
 } else {
     // Existing data from the database
-    $firstName = htmlentities($data['user'][0]['first_name']) ?? "";
-    $name = htmlentities($data['user'][0]['name']) ?? "";
-    $yearOfBirth = htmlentities($data['user'][0]['year_of_birth']) ?? "";
-    $team = htmlentities($data['team']['name']) ?? "";
+    $firstName = $data['user'][0]['first_name'] ? htmlentities($data['user'][0]['first_name']) : "";
+    $name = ($data['user'][0]['name']) ? htmlentities($data['user'][0]['name']) : "";
+    $yearOfBirth = ($data['user'][0]['year_of_birth']) ? htmlentities($data['user'][0]['year_of_birth']) : "";
+    $team = ($data['team']['name']) ? htmlentities($data['team']['name']) : "";
     $participant = "";
     $support = "";
     $estFinishTime = "00:00:00";
 }
-$email = htmlentities($_SESSION['email']) ?? "";
-$myGender = $data['user'][0]['gender'] ?? "";
-$event = $data['event']['name'] ?? "Veranstaltung nicht gefunden.";
-$date = $data['eventDate']['date'] ?? "";
+$email = ($_SESSION['email']) ? htmlentities($_SESSION['email']) : "";
+$myGender = $data['user'][0]['gender'] ? $data['user'][0]['gender'] : "";
+$event = $data['event']['name'] ? $data['event']['name'] : "Veranstaltung nicht gefunden.";
+$date = $data['eventDate']['date'] ? $data['eventDate']['date'] : "";
 if ($date != false && strlen($date) > 0) {
     $date = Utils::convertDate($data['eventDate']['date']);
 } else {
