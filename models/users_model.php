@@ -72,12 +72,21 @@ class Users_Model extends Model
      */
     public function team($user_id)
     {
-        $prepared_sql = "SELECT * FROM teams WHERE id = :uid LIMIT 1";
+        $prepared_sql = "SELECT team_id FROM users WHERE id = :uid LIMIT 1";
         $data = array(":uid" => $user_id);
+        $res = $this->_db->select($prepared_sql, $data);
+        if(count($res) == 1) {
+        $team_id = $res[0]['team_id'];
+        } else {
+            return false;
+        }
+
+        $prepared_sql = "SELECT * FROM teams WHERE id = :tid LIMIT 1";
+        $data = array(":tid" => $team_id);
 
         $res = $this->_db->select($prepared_sql, $data);
         if(count($res) == 1) {
-            return $res[0];
+          return $res[0];
         } else {
             return false;
         }

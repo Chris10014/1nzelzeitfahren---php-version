@@ -62,7 +62,11 @@
         </table>
     </section>
     <section>
-        <h1>Vielen Dank an die Helfer</h1>
+        <?php
+        if (count($data['supporter']) > 0) {
+            echo "<h1>Vielen Dank an die Helfer</h1>";
+        }
+        ?>
         <ul>
             <?php
             foreach ($data['supporter'] as $supporter) {

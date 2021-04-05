@@ -5,8 +5,8 @@ function test(str = 'test') {
 // sticky footer
 $(document).ready(function () {
   var viewportHeight = $(window).height();
-    var bodyHeight = $("#body").height();;
-    var footerHeight = $('#footer').height();
+  var bodyHeight = $("#body").height();;
+  var footerHeight = $('#footer').height();
 
     if (bodyHeight + footerHeight < viewportHeight) {
       $("#footer").addClass("fixed-bottom");
@@ -21,19 +21,11 @@ $(document).ready(function () {
     var bodyHeight = $("#body").height();;
     var footerHeight = $('#footer').height();
 
-    if (bodyHeight + footerHeight < viewportHeight) {
+    if ((bodyHeight + footerHeight) < viewportHeight) {
       $("#footer").addClass("fixed-bottom");
     } else {
       $("#footer").removeClass("fixed-bottom");
     }
-    console.log(
-      "window height: " +
-        viewportHeight +
-        " body height: " +
-        bodyHeight +
-        " footer height: " +
-        footerHeight
-    );
   });
 
 

@@ -61,7 +61,7 @@ class Events_Model extends Model
         JOIN users AS u ON u.id = e.user_id 
         LEFT JOIN teams AS t ON u.team_id = t.id
         WHERE e.event_date_id = :edid AND e.participant = :yes AND u.gender LIKE :gen
-        ORDER BY gender ASC, number ASC, ISNULL(estimated_finish_time), estimated_finish_time ASC, last_name ASC";
+        ORDER BY gender ASC,  ISNULL(start_time), start_time ASC, number ASC, ISNULL(estimated_finish_time), estimated_finish_time ASC, last_name ASC";
         $data = array(":edid" => $event_date_id, ":yes" => 1, ":gen" => $gender);
 
         return $this->_db->select($prepared_sql, $data);

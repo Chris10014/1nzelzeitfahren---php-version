@@ -38,6 +38,9 @@ if ($date != false && strlen($date) > 0) {
 ?>
 <header>
     <h1>Anmeldung</h1>
+   <?php
+   echo "Team: "; print_r($data['team']);
+   ?>
     <p>
         <?= $event ?> am: <strong><?= $date ?></strong>
     </p>

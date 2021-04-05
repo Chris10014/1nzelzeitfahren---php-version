@@ -59,7 +59,7 @@ class Registration extends Controller
         $team = $newUser->team($user_id);
         $date = $newEvent->eventDateWithRegistration($event_id);
         $event = $newEvent->event($event_id);
-
+      
         if(count($newUser->registration($_SESSION['userId'], $date['id'])) > 0) {
             
             Message::set("Du bist schon angemeldet.", "info");           
@@ -136,7 +136,7 @@ class Registration extends Controller
             $data["estimated_finish_time"] = $_REQUEST['estFinishTime'];
             $data["participant"] = 1;
         }
-        if (isset($_REQUEST['supporter'])) {
+        if (isset($_REQUEST['support'])) {
             $data["support"] = 1;
         }
         $data["user_id"] = $_SESSION['userId'];
