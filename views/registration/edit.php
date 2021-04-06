@@ -136,7 +136,9 @@ if ($date != false && strlen($date) > 0) {
 
             <input type="checkbox" class="form-check-input" name="raceInfo" id="raceInfo" value="confirmed" required>
             <label class="col-md-12 form-check-label">
-                Ich habe die <a href="<?= DIR ?>static/downloads/1zF_Infounterlage.pdf" target="_blank">Infounterlage</a> gelesen und bin insbesondere mit den Gefahrenhinweisen vertraut.
+                Ich habe die <a href="<?= DIR ?>static/downloads/1zF_Infounterlage.pdf" target="_blank">Infounterlage</a> gelesen und bin mit den Gefahrenhinweisen vertraut.
+                <p>Ich bin damit einverstanden, dass die von mir zu Aneldung angegeben Daten gespeichert werden.
+                Sie werden alleine zur Duchführung, Auswertung und Ergebnisdarstellung des Einzelzeitfahren Training genutzt. In diesem Rahmen werden Namen und erreichte Zeit veröffentlicht. Es werden keine Daten an Dritte weitergegeben.</p>
             </label>
         </div>
         </p>

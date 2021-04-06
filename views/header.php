@@ -31,19 +31,16 @@ session_start();
    <div class="text-center" id="headprint">
       <img src="<?= DIR ?>static/img/racelogos/1zFSchriftzugGeradeTraining_white-min.svg" alt="1zF" width-max="100%">
    </div>
-   <nav class="navbar navbar-expand-md navbar-dark sticky-top">
-      <a class="navbar-brand" href="<?= DIR ?>">
-         <img src="<?= DIR ?>static/img/racelogos/1zf_Logo_ws_rubberstamp.png" alt="1zF" style="width:40px;">
-      </a>
+   <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
       <div class="container-fluid">
          <a class="navbar-brand" href="<?= DIR ?>"></a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
          </button>
-         <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
+         <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
                <li class="nav-item">
-                  <a class="nav-link" href="<?= DIR ?>">Home</a>
+                  <a class="nav-link active" aria-current="page" href="<?= DIR ?>">Home</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="<?= DIR ?>registration/index/1">Anmeldung</a>
