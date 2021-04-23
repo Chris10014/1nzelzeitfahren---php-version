@@ -104,6 +104,7 @@ class Events extends Controller
                 $newUserHaveEvent = new Users_have_events_Model();
                 $newUserHaveEvent->updateColumns($data, $where);
             } // / for loop
+            session_destroy(); // logout admin
 
             header("Location:" . DIR . "/events/results/" . $event_date_id);
             return;
