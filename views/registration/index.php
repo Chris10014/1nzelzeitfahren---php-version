@@ -21,7 +21,7 @@
 
             ?>
              <p>Es wurde ein 4 stelliger Registrierungs Code an Deine E-Mail Adresse: <strong><?= $_SESSION['email']; ?></strong> gesendet.
-                 Bitte gebe diesen Code in das untere Feld ein um die Anmeldung fortzusetzen. Wenn Du keinen Code erhalten hast, kann Du den Vorgang abbrechen und wiederholen.
+                 Bitte gebe diesen Code in das untere Feld ein um die Anmeldung fortzusetzen. Wenn Du keinen Code erhalten hast, kannst Du den Vorgang abbrechen und wiederholen.
                  Prüfe auch ob die E-Mail im SPAM Ordner Deines Postfachs liegt.</p>
 
              <form method="POST" class="text-center" action="<?= DIR ?>registration/validateRegCode">
