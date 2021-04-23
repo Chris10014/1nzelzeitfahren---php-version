@@ -1,52 +1,55 @@
 <header>
-    <h1>Ergebnisse</h1>
+    <div class="container">
+        <h1>Ergebnisse</h1>
+    </div>
 </header>
 <main>
+    <div class="container">
 
-    <section>
-        <h2><?= $data['event']['name'] ?> am <?= Utils::convertDate($data['event']['date']) ?></h2>
+        <section>
+            <h2><?= $data['event']['name'] ?> am <?= Utils::convertDate($data['event']['date']) ?></h2>
 
-    </section>
-    <section>
-        <p>
-        <div class="form-group row">
-            <label for="team" class="col-md-2 col-form-label">Verein oder Team:</label>
-            <div class="col-md-4">
-                <input type="text" class="form-control" name="team" id="team" placeholder="Vereins- oder Teamname" value="<?= $team ?>">
+        </section>
+        <section>
+            <p>
+            <div class="form-group row">
+                <label for="team" class="col-md-2 col-form-label">Verein oder Team:</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="team" id="team" placeholder="Vereins- oder Teamname" value="<?= $team ?>">
+                </div>
             </div>
-        </div>
-        </p>
-        <table class="table table-dark" id="results">
-            <thead>
-                <tr>
-                    <th>Nr.</th>
-                    <th>Platz</th>
-                    <th>Name</th>
-                    <th>AK</th>
-                    <th>Verein</th>
-                    <th>Zeit</th>
-                </tr>
-            </thead>
-            <tbody id="resultsTableBody">
-                <?php
-                $gender = GENDER;
-                for ($i = 0; $i < count($gender); $i++) {
-                    if (count($data['results' . $gender[$i]]) > 0) {
-                        $rankCounter = 0;
-                        echo "<tr><td colspan='6'>";
-                        echo Utils::fullGender($gender[$i]);
-                        echo "</td></tr>";
-                        foreach ($data['results' . $gender[$i]] as $res) {
-                            if (isset($res['netto_finish_time'])) {
-                                $rankCounter++;
-                                $rank = $rankCounter;
-                                $time = $res['netto_finish_time'];
-                            } else {
-                                $rank = "--";
-                                $time = "dns/dnf";
-                            }
-                            $ageGroup = Utils::ageGroup($res['year_of_birth']);
-                            echo "<tr>
+            </p>
+            <table class="table table-dark" id="results">
+                <thead>
+                    <tr>
+                        <th>Nr.</th>
+                        <th>Platz</th>
+                        <th>Name</th>
+                        <th>AK</th>
+                        <th>Verein</th>
+                        <th>Zeit</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsTableBody">
+                    <?php
+                    $gender = GENDER;
+                    for ($i = 0; $i < count($gender); $i++) {
+                        if (count($data['results' . $gender[$i]]) > 0) {
+                            $rankCounter = 0;
+                            echo "<tr><td colspan='6'>";
+                            echo Utils::fullGender($gender[$i]);
+                            echo "</td></tr>";
+                            foreach ($data['results' . $gender[$i]] as $res) {
+                                if (isset($res['netto_finish_time'])) {
+                                    $rankCounter++;
+                                    $rank = $rankCounter;
+                                    $time = $res['netto_finish_time'];
+                                } else {
+                                    $rank = "--";
+                                    $time = "dns/dnf";
+                                }
+                                $ageGroup = Utils::ageGroup($res['year_of_birth']);
+                                echo "<tr>
                 <td>" . $res['number'] . "</td>
                 <td>" . $rank . "</td>
                 <td>" . htmlentities($res['first_name']) . " " . htmlentities($res['last_name']) . "</td>
@@ -54,31 +57,32 @@
                 <td>" . htmlentities($res['team_name']) . "</td>
                 <td>" . $time . "</td>
                 </tr>";
+                            }
                         }
                     }
-                }
-                ?>
-            </tbody>
-        </table>
-    </section>
-    <section>
-        <?php
-        if (count($data['supporter']) > 0) {
-            echo "<h1>Vielen Dank an die Helfer</h1>";
-        }
-        ?>
-        <ul>
+                    ?>
+                </tbody>
+            </table>
+        </section>
+        <section>
             <?php
-            foreach ($data['supporter'] as $supporter) {
-                echo "<li>" . htmlentities($supporter['first_name']) . " " . htmlentities($supporter["last_name"]);
-                if (isset($supporter["team_name"]) && strlen($supporter["team_name"]) > 0) {
-                    echo " (" . htmlentities($supporter["team_name"]) . ")";
-                }
-                echo "</li>";
+            if (count($data['supporter']) > 0) {
+                echo "<h1>Vielen Dank an die Helfer</h1>";
             }
             ?>
-        </ul>
-    </section>
+            <ul>
+                <?php
+                foreach ($data['supporter'] as $supporter) {
+                    echo "<li>" . htmlentities($supporter['first_name']) . " " . htmlentities($supporter["last_name"]);
+                    if (isset($supporter["team_name"]) && strlen($supporter["team_name"]) > 0) {
+                        echo " (" . htmlentities($supporter["team_name"]) . ")";
+                    }
+                    echo "</li>";
+                }
+                ?>
+            </ul>
+        </section>
+    </div><!-- / Container -->
 </main>
 
 <script>
