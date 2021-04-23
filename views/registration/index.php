@@ -37,7 +37,7 @@
          <?php
             } else {
             ?>
-             <p class="text-center">Bitte gib Deine E-Mail Adresse ein um zu prüfen, ob Du an der Veranstaltung teilnehmen darfst.</p>
+             <p class="text-center">Bitte gib Deine E-Mail Adresse ein um zu prüfen, ob Du schon eine Einladung hast.</p>
              <form method="POST" class="text-center" action="<?= DIR ?>registration/isEmailRegistered">
                  <p>
                      <label for="email">E-Mail:</label>

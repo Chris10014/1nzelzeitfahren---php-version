@@ -87,13 +87,17 @@
                 if (isset($_SESSION['adminCodeCreated']) && $_SESSION['adminCodeCreated'] == 1) {
 
                 ?>
-                 <p>Es wurde ein 4 stelliger Admin Code ( <?= $_SESSION['adminCode']; ?> )an Deine E-Mail Adresse: <strong><?= $_SESSION['email']; ?></strong> gesendet.
+                 <p>Es wurde ein Admin Code ( <?= $_SESSION['adminCode']; ?> )an Deine E-Mail Adresse: <strong><?= $_SESSION['email']; ?></strong> gesendet.
                      Bitte gebe diesen Code in das untere Feld ein um zu de Adminseiten zu gelangen.</p>
 
                  <form method="POST" class="text-center" action="<?= DIR ?>events/validateAdminCode">
                      <p>
-                         <label for="regCode">Code:</label>
-                         <input type="text" class="form-control" pattern="[0-9]{4}" name="regCode" id="regCode" placeholder="4 stelliger Code" value="">
+                     <div class="form-group">                         
+                         <div class="col-xs-2">
+                             <label for="regCode">Code:</label>
+                             <input type="text" class="form-control" pattern="[0-9]{6}" name="regCode" id="regCode" placeholder="Admin Code" value="">
+                         </div>                        
+                     </div>
                      </p>
                      <p>
                          <input type="submit" class="btn btn-default" name="send" value="Abschicken">

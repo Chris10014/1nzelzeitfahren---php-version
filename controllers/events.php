@@ -61,7 +61,26 @@ class Events extends Controller
      */
     public function updateResults($event_date_id)
     {
+        if (isset($_POST['cancel'])) {
+            session_destroy();
+        }
         $arrayLength = count($_REQUEST['userId']);
+
+        // validate start numbers
+        $numbers_validated = array_unique($_REQUEST['number']); // remove duplicate values from array
+        
+        If($numbers_validated != $_REQUEST['number']) {// has array changed
+            Message::set('Startnummern enthalten Dubletten.', 'warning');
+            header("Location: " . DIR . "events/editResults/1");
+            return;
+        }
+
+        $startTimes_validated = array_unique($_REQUEST['startTime']); // remove duplicate values from array
+        if ($startTimes_validated != $_REQUEST['startTime']) {// has array changed
+            Message::set('Startzeiten enthalten Dubletten.', 'warning');
+            header("Location: " . DIR . "events/editResults/1");
+            return;
+        }
 
         if (count($_REQUEST['startTime']) == $arrayLength && count($_REQUEST['number']) == $arrayLength && count($_REQUEST['bruttoFinishTime']) == $arrayLength) { // all array have the same number of items
             for ($i = 0; $i < $arrayLength; $i++) {
@@ -95,6 +114,10 @@ class Events extends Controller
 
     public function results($event_date_id)
     {
+        if (isset($_POST['cancel'])) {           
+            session_destroy();           
+        }
+       
         $data['title'] = 'Ergebnisse';
         $data['event'] = $this->_model->event($event_date_id);
         $data['resultsM'] = $this->_model->results($event_date_id, "M");
@@ -128,7 +151,7 @@ class Events extends Controller
     public function isUserAdmin() {
         // If canceled, start creation process again
         
-        if (isset($_POST['cancel'])) {
+        if (isset($_POST['cancel'])) {           
             session_destroy();
             header("Location: " . DIR);
             return;
@@ -163,7 +186,7 @@ class Events extends Controller
                     return;
                 }
 
-                $regCode = rand(1000, 9999);
+                $regCode = rand(100000, 999999);
 
                 $hashedRegCode = hash('md5', $regCode);
 
@@ -204,7 +227,7 @@ class Events extends Controller
             return;
         }
         // Validate entered reg code
-        if (isset($_POST['regCode']) && is_numeric($_POST['regCode']) && strlen($_POST['regCode']) == 4) {
+        if (isset($_POST['regCode']) && is_numeric($_POST['regCode']) && strlen($_POST['regCode']) == 6) {
             // Check regCode and email in database
             $res = (new Users_Model())->findByRegCode($_POST['regCode']);
             // No results found
