@@ -49,10 +49,14 @@ class Utils
     {
         $age = date('Y') - $yearOfBirth;
 
-        if ($grid == 10) {
-            return floor(($age / 10)) * 10;
-        } else {
-            return floor(($age / 10) * 2) / 2 * 10;
+        if ($age >= 20) { // is user older than 19?
+            if ($grid == 10) {
+                return floor(($age / 10)) * 10;
+            } else {
+                return floor(($age / 10) * 2) / 2 * 10;
+            }
+        } else { //
+            return "Jugend";
         }
     }
 
