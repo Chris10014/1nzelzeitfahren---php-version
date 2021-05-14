@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+    web:
+        build: .
+        volumes:
+            - ./:/var/www/html/einzelzeitfahren
+            # - .apache/vhosts:/etc/apache2/sites-available # to add apache vhost.conf
+            - ./php-ini:/usr/local/etc/php/conf.d/custom.ini
+        environment:
+            PHP_INI_SCAN_DIR: "/usr/local/etc/php/custom.d:/usr/local/etc/php/conf.d"
+        ports: 
+            - 80:80
+    db:
+        image: mysql
+        volumes:
+            - ./db_data:/var/lib/mysql
+        environment: 
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_DATABASE: docker_database
+        ports:
+            - 3306:3306
+    phpmyadmin:
+        image: phpmyadmin
+        depends_on:
+            - "db"
+        environment: 
+            MYSQL_ROOT_PASSWORD: secret
+        ports:
+            - 8080:80
+
+    mailhog:
+        image: mailhog/mailhog:latest
+        restart: always
+        ports:
+            - 1025:1025
+            - 8025:8025

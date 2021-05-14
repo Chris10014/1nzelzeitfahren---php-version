@@ -8,7 +8,6 @@ class Welcome extends Controller
 
     public function index() 
     {
-        
         $this->_view->render('welcome');
 
     }

@@ -19,7 +19,7 @@
                 <li>Die zu Beginn festgelegte Startreihenfolge und die Startzeiten sind einzuhalten.</li>
                 <li>Jeder Fahrer ist für das pünktliche Erscheinen am Start selbst verantwortlich.</li>
                 <li>Die Teilnahme erfolgt auf eigene Verantwortung.</li>
-                <li>Gastfahrer können mit Zustimmung des Veranstalters zugelassen werden. Die Zeiten der Gastfahrer werden nicht gewertet.</li>
+                <li>Gastfahrer können mit Zustimmung des Veranstalters zugelassen werden.</li>
                 <li>Jeder liest und akzeptiert die <a href="<?= DIR ?>static/downloads/Verzichtserklärung und Haftungsfreistellung.pdf" target="_blank">Verzichtserklärung, die Haftungsfreistellung</a> sowie die <a href="<?= DIR ?>static/downloads/1zF_Infounterlage.pdf" target="_blank">Information zu den Gefahrenpunkten.</a></li>
             </ul>
             </p>
