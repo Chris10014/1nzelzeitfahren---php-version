@@ -3,6 +3,6 @@ apache/
 db_data/
 php-ini/
 docker-compose.yaml
-Dockefile
+Dockerfile
 phpinfo.php
-data.sql/
+data.sql/git st
