@@ -1,5 +1,31 @@
 <h3>Exception information:</h3>
 
+         <p><strong>Date:</strong> May 14, 2021 22:19PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[HY000] [2002] Ein Verbindungsversuch ist fehlgeschlagen, da die Gegenstelle nach einer bestimmten Zeitspanne nicht richtig reagiert hat, oder die hergestellte Verbindung war fehlerhaft, da der verbundene Host nicht reagiert hat.
+</p>
+
+         <p><strong>Code:</strong> 2002</p>
+
+         <p><strong>File:</strong> C:\xampp\htdocs\einzelzeitfahren\helpers\database.php</p>
+
+         <p><strong>Line:</strong> 7</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 C:\xampp\htdocs\einzelzeitfahren\helpers\database.php(7): PDO->__construct('mysql:host=172....', 'root', 'secret')
+#1 C:\xampp\htdocs\einzelzeitfahren\core\model.php(9): Database->__construct()
+#2 C:\xampp\htdocs\einzelzeitfahren\models\registration_model.php(8): Model->__construct()
+#3 C:\xampp\htdocs\einzelzeitfahren\core\controller.php(18): Registration_Model->__construct()
+#4 C:\xampp\htdocs\einzelzeitfahren\controllers\registration.php(11): Controller->__construct()
+#5 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(53): Registration->__construct()
+#6 C:\xampp\htdocs\einzelzeitfahren\core\bootstrap.php(27): Bootstrap->_loadExistingController()
+#7 C:\xampp\htdocs\einzelzeitfahren\index.php(38): Bootstrap->init()
+#8 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
          <p><strong>Date:</strong> May 14, 2021 18:34PM</p>
 
          <p><strong>Message:</strong> SQLSTATE[HY000] [2002] Connection refused</p>
