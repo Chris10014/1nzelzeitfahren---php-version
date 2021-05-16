@@ -2,7 +2,7 @@ config.php
 apache/
 db_data/
 php-ini/
-docker-compose.yaml/
-Dockefile/
+docker-compose.yaml
+Dockefile
 phpinfo.php
-data.sql
+data.sql/
