@@ -25,6 +25,7 @@
                              <tr>
                                  <th>Nr.</th>
                                  <th>Startzeit</th>
+                                 <th>Planzeit</th>
                                  <th>Name</th>
                                  <th>AK</th>
                                  <th>Verein</th>
@@ -36,11 +37,10 @@
                              <?php
                                 $gender = GENDER;
                                 foreach ($data['participants'] as $part) {
-                                    print_r($part);
-                                    echo "<br>";
                                     $userId = $part['user_id'];
                                     $ageGroup = Utils::ageGroup($part['year_of_birth']);
                                     $number = $part['number'] ? $part['number'] : "tbd";
+                                    $estimatedFinishTime = $part['estimated_finish_time'] ? $part['estimated_finish_time'] : "";
                                     $bruttoFinishTime = $part['brutto_finish_time'];
                                     echo $bruttoFinishTime;
                                     echo "
@@ -54,7 +54,10 @@
                 </td> 
                 <td>
                  <input type='time' class='form-control' step='1' name='startTime[]' id='startTime' placeholder='HH:MM:SS' value='" . $part['start_time'] . "'>  
-                </td>              
+                </td> 
+                <td>"
+                 . $part['estimatedFinishTime'] . "
+                </td>             
                 <td>" . htmlentities($part['first_name']) . " " . htmlentities($part['last_name']) . "</td>
                 <td>" . $part['gender'] . " " . $ageGroup . "</td>
                 <td>" . htmlentities($part['team_name']) . "</td>
@@ -87,7 +90,7 @@
                 if (isset($_SESSION['adminCodeCreated']) && $_SESSION['adminCodeCreated'] == 1) {
 
                 ?>
-                 <p>Es wurde ein Admin Code ( <?= $_SESSION['adminCode']; ?> )an Deine E-Mail Adresse: <strong><?= $_SESSION['email']; ?></strong> gesendet.
+                 <p>Es wurde ein Admin Code an Deine E-Mail Adresse: <strong><?= $_SESSION['email']; ?></strong> gesendet.
                      Bitte gebe diesen Code in das untere Feld ein um zu de Adminseiten zu gelangen.</p>
 
                  <form method="POST" class="text-center" action="<?= DIR ?>events/validateAdminCode">

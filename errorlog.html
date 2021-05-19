@@ -1,5 +1,30 @@
 <h3>Exception information:</h3>
 
+         <p><strong>Date:</strong> May 18, 2021 15:55PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[HY000] [2002] Connection refused</p>
+
+         <p><strong>Code:</strong> 2002</p>
+
+         <p><strong>File:</strong> /var/www/html/einzelzeitfahren/helpers/database.php</p>
+
+         <p><strong>Line:</strong> 7</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 /var/www/html/einzelzeitfahren/helpers/database.php(7): PDO->__construct('mysql:host=172....', 'root', 'secret')
+#1 /var/www/html/einzelzeitfahren/core/model.php(9): Database->__construct()
+#2 /var/www/html/einzelzeitfahren/models/events_model.php(8): Model->__construct()
+#3 /var/www/html/einzelzeitfahren/core/controller.php(18): Events_Model->__construct()
+#4 /var/www/html/einzelzeitfahren/controllers/events.php(12): Controller->__construct()
+#5 /var/www/html/einzelzeitfahren/core/bootstrap.php(53): Events->__construct()
+#6 /var/www/html/einzelzeitfahren/core/bootstrap.php(27): Bootstrap->_loadExistingController()
+#7 /var/www/html/einzelzeitfahren/index.php(38): Bootstrap->init()
+#8 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
          <p><strong>Date:</strong> May 14, 2021 22:19PM</p>
 
          <p><strong>Message:</strong> SQLSTATE[HY000] [2002] Ein Verbindungsversuch ist fehlgeschlagen, da die Gegenstelle nach einer bestimmten Zeitspanne nicht richtig reagiert hat, oder die hergestellte Verbindung war fehlerhaft, da der verbundene Host nicht reagiert hat.
