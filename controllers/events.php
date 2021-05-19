@@ -89,8 +89,12 @@ class Events extends Controller
                 $number = $_REQUEST['number'][$i];
                 $brutto_finish_time = $_REQUEST['bruttoFinishTime'][$i];
 
-                $time = strtotime($brutto_finish_time) - strtotime($start_time);
-                $netto_finish_time = gmdate("H:i:s", $time);
+                if (strtotime($brutto_finish_time) > strtotime($start_time)) {
+                    $time = strtotime($brutto_finish_time) - strtotime($start_time);
+                    $netto_finish_time = gmdate("H:i:s", $time);
+                } else {
+                    $netto_finish_time = "-/-";
+                }
 
                 // Update user have events
                 $data = array(

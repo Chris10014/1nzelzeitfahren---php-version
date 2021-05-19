@@ -40,14 +40,11 @@
                             echo Utils::fullGender($gender[$i]);
                             echo "</td></tr>";
                             foreach ($data['results' . $gender[$i]] as $res) {
-                                if (isset($res['netto_finish_time'])) {
+                                if (isset($res['netto_finish_time']) && $res['netto_finish_time'] != "00:00:00") {
                                     $rankCounter++;
                                     $rank = $rankCounter;
                                     $time = $res['netto_finish_time'];
-                                } else {
-                                    $rank = "--";
-                                    $time = "dns/dnf";
-                                }
+                                 
                                 $ageGroup = Utils::ageGroup($res['year_of_birth']);
                                 echo "<tr>
                 <td>" . $res['number'] . "</td>
@@ -57,6 +54,7 @@
                 <td>" . htmlentities($res['team_name']) . "</td>
                 <td>" . $time . "</td>
                 </tr>";
+                                }
                             }
                         }
                     }
