@@ -56,7 +56,7 @@
                  <input type='time' class='form-control' step='1' name='startTime[]' id='startTime' placeholder='HH:MM:SS' value='" . $part['start_time'] . "'>  
                 </td> 
                 <td>"
-                 . $part['estimatedFinishTime'] . "
+                 . $estimatedFinishTime . "
                 </td>             
                 <td>" . htmlentities($part['first_name']) . " " . htmlentities($part['last_name']) . "</td>
                 <td>" . $part['gender'] . " " . $ageGroup . "</td>
