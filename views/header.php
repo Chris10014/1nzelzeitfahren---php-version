@@ -20,19 +20,15 @@ session_start();
 
    <!-- jQuery -->
    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
-
-   <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-   <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-   <script src="<?= DIR ?>static/js/1zf.js"></script>
 </head>
 
 
 <body id="body">
-   <div class="text-center" id="headprint">
+   
+   <div class=" text-center" id="headprint">
       <img src="<?= DIR ?>static/img/racelogos/1zFSchriftzugGeradeTraining_white-min.svg" alt="1zF" width-max="100%">
    </div>
-   <div class="conrainer">
+   <div class="container">
 
       <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
          <div class="container-fluid">
@@ -46,19 +42,22 @@ session_start();
                      <a class="nav-link active" aria-current="page" href="<?= DIR ?>">Home</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="<?= DIR ?>registration/index/1">Anmeldung</a>
+                     <a class="nav-link" href="<?= DIR ?>registration/index">Anmeldung</a>
                   </li>
                   <li class=" nav-item">
                      <a class="nav-link" href="<?= DIR ?>athletes/rules">Ausschreibung</a>
                   </li>
                   <li class=" nav-item">
-                     <a class="nav-link" href="<?= DIR ?>events/participants/1">Teilnehmerliste</a>
+                     <?php
+                     
+                     ?>
+                     <a class="nav-link" href="<?= DIR ?>events/participants">Teilnehmerliste</a>
                   </li>
                   <li class=" nav-item">
-                     <a class="nav-link" href="<?= DIR ?>events/results/1">Ergebnisse</a>
+                     <a class="nav-link" href="<?= DIR ?>events/results">Ergebnisse</a>
                   </li>
                   <li class=" nav-item">
-                     <a class="nav-link" style="color:#343a40" href="<?= DIR ?>events/editResults/1">Admin</a>
+                     <a class="nav-link" style="color:#343a40" href="<?= DIR ?>events/editResults/2">Admin</a>
                   </li>
                </ul>
             </div>

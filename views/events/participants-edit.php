@@ -19,7 +19,7 @@
             ?>
              <section>
                  <h2><?= $data['event']['name'] ?> am <?= Utils::convertDate($data['event']['date']) ?></h2>
-                 <form method="POST" action="<?= DIR ?>events/updateResults/1">
+                 <form method="POST" action="<?= DIR ?>events/updateResults/2">
                      <table class="table table-dark" id="participants">
                          <thead>
                              <tr>
@@ -90,6 +90,7 @@
                 if (isset($_SESSION['adminCodeCreated']) && $_SESSION['adminCodeCreated'] == 1) {
 
                 ?>
+                <code><?= $_SESSION['adminCode']?></code>
                  <p>Es wurde ein Admin Code an Deine E-Mail Adresse: <strong><?= $_SESSION['email']; ?></strong> gesendet.
                      Bitte gebe diesen Code in das untere Feld ein um zu de Adminseiten zu gelangen.</p>
 

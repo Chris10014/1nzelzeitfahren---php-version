@@ -47,7 +47,11 @@
             </p>
             <h2>Ort und Zeit</h2>
             <p>
-                Datum: 30.05.2021<br>
+                Datum: <?php if($_SESSION["eventDate"] !== null) {
+                    echo Utils::convertDate($_SESSION["eventDate"]);
+                 } else {
+                    echo "noch nicht terminiert";
+                 } ?> <br>
                 Start: erster Start erfolgt um 8:00h (Änderungen vorbehalten). Weitere Startzeiten bitte der Teilnehmerliste entnehmen.<br>
                 Ort: Ortsausgang Vockenhausen in Richtung Ehlhalten<br><br>
                 Gemeinsames Frühstück am Anschluss (auf eigene Rechnung).

@@ -11,13 +11,24 @@ class Registration extends Controller
         parent::__construct();       
     }
 
-    public function index($event_id = 1) 
+    public function index() 
     {
-        $_SESSION['eventId'] = $event_id;
+        $newEvent = new Events_Model();
+        $event = $newEvent->regOpen(); //find event with active registration phase
+        if($event !== null) {
+            print_r($event);
+            $_SESSION['eventId'] = $event["id"];
+            $_SESSION['eventDate'] = $event["date"];
+            $data['eventId'] = $event["id"];
+        } else {
+            $data['eventId'] = null;
+            $_SESSION['eventId'] = null;
+            $_SESSION['eventDate'] = null;
+        }
 
         $data['title'] = "Anmeldung";
         $this->_view->render('header', $data);
-        $this->_view->render('registration/index');
+        $this->_view->render('registration/index', $data);
         $this->_view->render('footer');
         
 

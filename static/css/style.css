@@ -7,6 +7,12 @@ body {
    background-color: #343a40;
 }
 
+/* wrap the header and content (exclude the footer) in this class 
+to to get a sticky footer */
+.sticky-footer {
+   min-height: calc(100vh - 95px);
+}
+
 section, nav {
    margin-bottom: 3%;
 }

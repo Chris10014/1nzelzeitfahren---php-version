@@ -39,10 +39,12 @@ if ($date != false && strlen($date) > 0) {
 <header>
     <div class="container">
         <h1>Anmeldung</h1>
+        <code>
         <?php
         echo "Team: ";
         print_r($data['team']);
         ?>
+        </code>
         <p>
             <?= $event ?> am: <strong><?= $date ?></strong>
         </p>
@@ -113,7 +115,7 @@ if ($date != false && strlen($date) > 0) {
                     } elseif ($gender == 'W') {
                         echo " <i class='fas fa-venus'></i>";
                     } else {
-                        echo " <i class='fas fa-transgender'></i>";
+                        echo "<i class='fas fa-transgender'></i>";
                     }
                     echo "</label>
                 <input type='radio' name='gender' id='" . $gender . "' value='" . $gender . "'";

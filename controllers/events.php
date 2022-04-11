@@ -2,6 +2,7 @@
 
 require('models/users_model.php');
 require('models/teams_model.php');
+require('models/event_dates_model.php');
 require('models/users_have_events_model.php');
 require('models/users_have_roles_model.php');
 
@@ -24,15 +25,22 @@ class Events extends Controller
         $this->_view->render('footer');
     }
 
-    public function participants($event_date_id)
+    public function participants()
     {
         $data['title'] = 'Teilnehmer';
-        $data['event'] = $this->_model->event($event_date_id);
-        $data['participants'] = $this->_model->participants($event_date_id);
-        $data['participantsM'] = $this->_model->participants($event_date_id, "M");
-        $data['participantsW'] = $this->_model->participants($event_date_id, "W");
-        $data['participantsD'] = $this->_model->participants($event_date_id, "D");
-        $data['supporter'] = $this->_model->supporter($event_date_id);
+        $newEventDates = new Event_dates_Model();
+        $eventDates = $newEventDates->all(); 
+        $latestEventDate = $eventDates[count($eventDates) -1];
+        $event_date_id = $latestEventDate["id"];
+
+            $event_date_id = $_SESSION["eventDate"]["id"];            
+            $data['event'] = $this->_model->event($event_date_id);
+            $data['participants'] = $this->_model->participants($event_date_id);
+            $data['participantsM'] = $this->_model->participants($event_date_id, "M");
+            $data['participantsW'] = $this->_model->participants($event_date_id, "W");
+            $data['participantsD'] = $this->_model->participants($event_date_id, "D");
+            $data['supporter'] = $this->_model->supporter($event_date_id);
+              
 
         $this->_view->render('header', $data);
         $this->_view->render('events/participants', $data);
@@ -117,19 +125,35 @@ class Events extends Controller
         }
     }
 
-    public function results($event_date_id)
+    public function results($event_date_id = null)
     {
         if (isset($_POST['cancel'])) {           
             session_destroy();           
         }
-       
+
         $data['title'] = 'Ergebnisse';
-        $data['event'] = $this->_model->event($event_date_id);
-        $data['resultsM'] = $this->_model->results($event_date_id, "M");
-        $data['resultsW'] = $this->_model->results($event_date_id, "W");
-        $data['resultsD'] = $this->_model->results($event_date_id, "D");
-        $data['supporter'] = $this->_model->supporter($event_date_id);
-        $data['teamNames'] = $this->_model->teamNames($event_date_id);
+
+        if($event_date_id == null) {
+            $newEventDates = new Event_dates_Model();
+            $eventDates = $newEventDates->all();
+            $latestEventDate = $eventDates[count($eventDates) - 1];
+            if($latestEventDate["date"] <= date("Y-mm-dd")) { //if latest event is already over
+                $event_date_id = $latestEventDate["id"];
+            } else { //if not take the event before the latest
+                $event_date_id = $eventDates[count($eventDates) - 2]['id'];
+            }
+        }
+
+        $newEventDates = new Event_dates_Model();
+        $eventDates = $newEventDates->all(); 
+
+            $data['event'] = $this->_model->event($event_date_id);
+            $data['resultsM'] = $this->_model->results($event_date_id, "M");
+            $data['resultsW'] = $this->_model->results($event_date_id, "W");
+            $data['resultsD'] = $this->_model->results($event_date_id, "D");
+            $data['supporter'] = $this->_model->supporter($event_date_id);
+            $data['teamNames'] = $this->_model->teamNames($event_date_id);
+            $data['allEventDates'] = $eventDates;
 
         $this->_view->render('header', $data);
         $this->_view->render('events/results', $data);
@@ -176,7 +200,7 @@ class Events extends Controller
             $row = (new Users_Model())->findByEmail($_POST['email']);
             if (count($row) == 0) {
                 Message::set('E-Mail Adresse nicht bekannt.', 'warning');
-                header("Location: " . DIR . "events/editResults/1");
+                header("Location: " . DIR . "events/editResults/2");
                 return;
             } else {                
                 $_SESSION['userId'] = $row[0]['id'];
@@ -187,7 +211,7 @@ class Events extends Controller
                
                 if($admin !== true) {                    
                     Message::set('Du bist kein Admin.', 'warning');
-                    header("Location: " . DIR . "events/editResults/1");
+                    header("Location: " . DIR . "events/editResults/2");
                     return;
                 }
 
@@ -199,7 +223,7 @@ class Events extends Controller
 
                 if ($res !== 1) {
                     Message::set("Admin Code konnte nicht erzeugt werden", "danger");
-                    header("Location:" . DIR . "events/editResults/1");
+                    header("Location:" . DIR . "events/editResults/2");
                     return;
                 }
 
@@ -210,12 +234,12 @@ class Events extends Controller
                 $txt = "Dein Admincode für 1nzelzeitfahren (Training): <strong>" . $regCode . "</strong>";
                 Utils::sendMail($_SESSION["email"], $txt);
                 
-                header("Location: " . DIR . "events/editResults/1");
+                header("Location: " . DIR . "events/editResults/2");
                 return;
             }
         } else {
             Message::set('Bitte eine E-Mail Adresse eingeben.', 'warning');
-            header("Location: " . DIR . "events/editResults/1");
+            header("Location: " . DIR . "events/editResults/2");
             return;
         }
     }
@@ -238,7 +262,7 @@ class Events extends Controller
             // No results found
             if (count($res) == 0) {
                 Message::set("Falscher Registrierungscode.", "warning");
-                header("Location: " . DIR . "events/editResults/1");
+                header("Location: " . DIR . "events/editResults/2");
                 return;
             }
             // Open the door as admin
@@ -247,11 +271,11 @@ class Events extends Controller
             // Delete admin code
             self::updateRegCode(NULL);
 
-            header("Location:" . DIR . "events/editResults/1");
+            header("Location:" . DIR . "events/editResults/2");
             return;
         } else {
             Message::set("Ungültiger Admincode.", "warning");
-            header("Location: " . DIR . "events/editResults/1" );
+            header("Location: " . DIR . "events/editResults/2" );
             return;
         }
     }

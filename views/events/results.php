@@ -1,5 +1,16 @@
 <header>
+
     <div class="container">
+        <div class="mb-4">
+        <?php
+        foreach (array_reverse($data["allEventDates"]) as $eventDate) {
+            echo "<a href='";
+            echo DIR;
+            echo  "events/results/", $eventDate['id'],"'>";
+            echo  Utils::convertDate($eventDate['date'])," | </a>";
+        }
+        ?>
+        </div>
         <h1>Ergebnisse</h1>
     </div>
 </header>
@@ -8,7 +19,6 @@
 
         <section>
             <h2><?= $data['event']['name'] ?> am <?= Utils::convertDate($data['event']['date']) ?></h2>
-
         </section>
         <section>
             <p>
@@ -44,9 +54,9 @@
                                     $rankCounter++;
                                     $rank = $rankCounter;
                                     $time = $res['netto_finish_time'];
-                                 
-                                $ageGroup = Utils::ageGroup($res['year_of_birth']);
-                                echo "<tr>
+
+                                    $ageGroup = Utils::ageGroup($res['year_of_birth']);
+                                    echo "<tr>
                 <td>" . $res['number'] . "</td>
                 <td>" . $rank . "</td>
                 <td>" . htmlentities($res['first_name']) . " " . htmlentities($res['last_name']) . "</td>

@@ -13,6 +13,20 @@ class Events_Model extends Model
         return $this->_db->select('SELECT * FROM events ORDER BY name DESC');
     }
 
+    public function regOpen()
+    {
+        $prepared_sql = "SELECT * FROM events JOIN event_dates ON events.id = event_dates.event_id 
+        WHERE event_dates.reg_open = :regOpen LIMIT 1";
+        $data = array(":regOpen" => 1);
+
+        $res = $this->_db->select($prepared_sql, $data);
+        if (count($res) == 1) {
+            return $res[0];
+        } else {
+            return false;
+        }
+    }
+
     public function event($event_date_id)
     {
         $prepared_sql = "SELECT * FROM event_dates JOIN events ON events.id = event_dates.event_id 
@@ -61,7 +75,7 @@ class Events_Model extends Model
         JOIN users AS u ON u.id = e.user_id 
         LEFT JOIN teams AS t ON u.team_id = t.id
         WHERE e.event_date_id = :edid AND e.participant = :yes AND u.gender LIKE :gen
-        ORDER BY gender ASC, start_time ASC, number ASC, ISNULL(estimated_finish_time), estimated_finish_time ASC, last_name ASC";
+        ORDER BY start_time ASC, number ASC, ISNULL(estimated_finish_time), estimated_finish_time ASC, last_name ASC";
         $data = array(":edid" => $event_date_id, ":yes" => 1, ":gen" => $gender);
 
         return $this->_db->select($prepared_sql, $data);
