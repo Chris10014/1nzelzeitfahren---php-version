@@ -30,11 +30,11 @@ class Events extends Controller
         $data['title'] = 'Teilnehmer';
         $newEventDates = new Event_dates_Model();
         $eventDates = $newEventDates->all(); 
-        $latestEventDate = $eventDates[count($eventDates) -1];
+        $latestEventDate = $eventDates[0]; //latest event date
         $event_date_id = $latestEventDate["id"];
-
-            $event_date_id = $_SESSION["eventDate"]["id"];            
+         
             $data['event'] = $this->_model->event($event_date_id);
+            $data['eventDate'] = $latestEventDate["date"];
             $data['participants'] = $this->_model->participants($event_date_id);
             $data['participantsM'] = $this->_model->participants($event_date_id, "M");
             $data['participantsW'] = $this->_model->participants($event_date_id, "W");
@@ -165,6 +165,7 @@ class Events extends Controller
             $data['resultsD'] = $this->_model->results($event_date_id, "D");
             $data['supporter'] = $this->_model->supporter($event_date_id);
             $data['teamNames'] = $this->_model->teamNames($event_date_id);
+            $data['eventDateId'] = $event_date_id;
             $data['allEventDates'] = $eventDates;
 
         $this->_view->render('header', $data);

@@ -103,9 +103,8 @@
     // Vereinsfilter für Ergebnisse
     $(document).ready(function() {
         $("#team").keyup(function() {
-            console.log("filter");
             $.getJSON(
-                '<?= DIR ?>events/resultsPerTeam/<?= $data['event']['id'] ?>/' + $("#team").val(),
+                '<?= DIR ?>events/resultsPerTeam/<?= $data['eventDateId'] ?>/' + $("#team").val(),
                 function(data) {
                     $("#resultsTableBody").empty();
                     if (typeof data == "object") {

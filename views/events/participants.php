@@ -6,7 +6,7 @@
 <main>
     <div class="container">
         <section>
-            <h2><?= $data['event']['name'] ?> am <?= Utils::convertDate($data['event']['date']) ?></h2>
+            <h2><?= $data['event']['name'] ?> am <?= Utils::convertDate($data['eventDate']) ?></h2>
             <?php
             if(count($data['participants']) > 0) {
             ?>
