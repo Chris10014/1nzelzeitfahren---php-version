@@ -39,12 +39,6 @@ if ($date != false && strlen($date) > 0) {
 <header>
     <div class="container">
         <h1>Anmeldung</h1>
-        <code>
-        <?php
-        echo "Team: ";
-        print_r($data['team']);
-        ?>
-        </code>
         <p>
             <?= $event ?> am: <strong><?= $date ?></strong>
         </p>
@@ -136,14 +130,14 @@ if ($date != false && strlen($date) > 0) {
             <div class="form-check">
 
                 <input type="checkbox" class="form-check-input" name="termsAndConditions" id="termsAndConditions" value="confirmed" required>
-                <label class="col-md-12 form-check-label">
+                <label for="termsAndConditions" class="col-md-12 form-check-label">
                     Ich habe die <a href="<?= DIR ?>static/downloads/Verzichtserklärung und Haftungsfreistellung.pdf" target="_blank">Verzichtserklärung und Haftungsfreistellung</a> gelesen und akzeptiert.
                 </label>
             </div>
             <div class="form-check">
 
                 <input type="checkbox" class="form-check-input" name="raceInfo" id="raceInfo" value="confirmed" required>
-                <label class="col-md-12 form-check-label">
+                <label for="raceInfo" class="col-md-12 form-check-label">
                     Ich habe die <a href="<?= DIR ?>static/downloads/1zF_Infounterlage.pdf" target="_blank">Infounterlage</a> gelesen und bin mit den Gefahrenhinweisen vertraut.
                     <p>Ich bin damit einverstanden, dass die von mir zu Anmeldung angegeben Daten gespeichert werden.
                         Sie werden alleine zur Durchführung, Auswertung und Ergebnisdarstellung des Einzelzeitfahren Training genutzt. In diesem Rahmen werden Namen und erreichte Zeit veröffentlicht.

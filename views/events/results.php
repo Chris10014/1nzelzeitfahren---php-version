@@ -2,14 +2,14 @@
 
     <div class="container">
         <div class="mb-4">
-        <?php
-        foreach (array_reverse($data["allEventDates"]) as $eventDate) {
-            echo "<a href='";
-            echo DIR;
-            echo  "events/results/", $eventDate['id'],"'>";
-            echo  Utils::convertDate($eventDate['date'])," | </a>";
-        }
-        ?>
+            <?php
+            foreach (array_reverse($data["allEventDates"]) as $eventDate) {
+                echo "<a class='btn btn-light m-1' role='button' href='";
+                echo DIR;
+                echo  "events/results/", $eventDate['id'], "'>";
+                echo  date("Y", strtotime($eventDate['date'])), "</a>";
+            }
+            ?>
         </div>
         <h1>Ergebnisse</h1>
     </div>
@@ -55,7 +55,7 @@
                                     $rank = $rankCounter;
                                     $time = $res['netto_finish_time'];
 
-                                    $ageGroup = Utils::ageGroup($res['year_of_birth']);
+                                    $ageGroup = Utils::ageGroup($data['event']['date'], $res['year_of_birth']);
                                     echo "<tr>
                 <td>" . $res['number'] . "</td>
                 <td>" . $rank . "</td>
@@ -94,7 +94,7 @@
 </main>
 
 <script>
-    // autocomplete for team field
+    //autocomplete for team field
     $(document).ready(function() {
         $("#team").autocomplete({
             source: '<?= DIR ?>registration/autocompleteForTeams'
@@ -102,9 +102,10 @@
     });
     // Vereinsfilter für Ergebnisse
     $(document).ready(function() {
-        $("#team").on("keyup", function() {
+        $("#team").keyup(function() {
+            console.log("filter");
             $.getJSON(
-                '<?= DIR ?>events/resultsPerTeam/<?= $data["event"]["id"] ?>/' + $("#team").val(),
+                '<?= DIR ?>events/resultsPerTeam/<?= $data['event']['id'] ?>/' + $("#team").val(),
                 function(data) {
                     $("#resultsTableBody").empty();
                     if (typeof data == "object") {

@@ -24,7 +24,7 @@
                     <?php
                     $gender = GENDER;
                     foreach ($data['participants'] as $part) {
-                        $ageGroup = Utils::ageGroup($part['year_of_birth']);
+                        $ageGroup = Utils::ageGroup($data['event']['date'], $part['year_of_birth']);
                         $number = $part['number'] ? $part['number'] : "tbd";
                         echo "<tr>
                 <td>" . $number . "</td> 

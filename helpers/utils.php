@@ -45,9 +45,9 @@ class Utils
      * @param int $grid Jahreszuschnitt der Alterklassen. Übernimmt die const AGEGROUPS aus der config.php
      * @return int Alterklasse 
      */
-    public static function ageGroup($yearOfBirth, $grid = AGEGROUPS)
+    public static function ageGroup($eventDate, $yearOfBirth, $grid = AGEGROUPS)
     {
-        $age = date('Y') - $yearOfBirth;
+        $age = date("Y", strtotime($eventDate)) - $yearOfBirth;
 
         if ($age >= 20) { // is user older than 19?
             if ($grid == 10) {

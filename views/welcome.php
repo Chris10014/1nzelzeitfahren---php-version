@@ -57,8 +57,9 @@ session_start();
     </header>
     <main>
         <div class="container">
+            <p><?= Message::show() ?></p>
             <div class="text-center">
-                <div class="row">
+                <div class="card-group justify-content-center mt-5">
                     <div class="col-12 col-md-5 m-1">
                         <div class="card ">
                             <a style="color: black" href="<?= DIR ?>registration/index">
@@ -97,7 +98,7 @@ session_start();
                     </div>
                     <div class="col-12 col-md-5 m-1">
                         <div class="card">
-                            <a style="color: black"  class="" href="<?= DIR ?>events/results">
+                            <a style="color: black" class="" href="<?= DIR ?>events/results">
                                 <div class="card-body">
 
                                     <span><i class='fas fa-medal fa-4x'></i></span>
@@ -111,8 +112,7 @@ session_start();
             </div>
         </div>
         <div class="text-center">
-            <p><?= Message::show() ?></p>
-            <p><img class="m-5" src="<?= DIR ?>static/img/racelogos/winnerWheel_2021.png" alt="Siegertafel"></p>
+            <p><img class="img-fluid m-5" src="<?= DIR ?>static/img/racelogos/winnerWheel_2021.png" alt="Siegertafel" width-max="100%"></p>
         </div>
     </main>
     <footer></footer>

@@ -47,14 +47,26 @@ class Events extends Controller
         $this->_view->render('footer');
     }
 
-    public function editResults($event_date_id)
+    public function editResults($event_date_id = null)
     {
+        if ($event_date_id === null) {
+            $newEventDates = new Event_dates_Model();
+            $eventDates = $newEventDates->all();
+            $latestEventDate = $eventDates[count($eventDates) - 1];
+            $event_date_id = $latestEventDate["id"];          
+        }
+
+        $newEventDates = new Event_dates_Model();
+        $eventDates = $newEventDates->all(); 
+
         $data['title'] = 'Ergebnisse eintragen';
+        $data['eventDateId'] = $event_date_id;
         $data['event'] = $this->_model->event($event_date_id);
         $data['participants'] = $this->_model->participants($event_date_id);
         $data['participantsM'] = $this->_model->participants($event_date_id, "M");
         $data['participantsW'] = $this->_model->participants($event_date_id, "W");
         $data['participantsD'] = $this->_model->participants($event_date_id, "D");
+        $data['allEventDates'] = $eventDates;
 
         $this->_view->render('header', $data);
         $this->_view->render('events/participants-edit', $data);
@@ -79,14 +91,14 @@ class Events extends Controller
         
         If($numbers_validated != $_REQUEST['number']) {// has array changed
             Message::set('Startnummern enthalten Dubletten.', 'warning');
-            header("Location: " . DIR . "events/editResults/1");
+            header("Location: " . DIR . "events/editResults/" . $event_date_id);
             return;
         }
 
         $startTimes_validated = array_unique($_REQUEST['startTime']); // remove duplicate values from array
         if ($startTimes_validated != $_REQUEST['startTime']) {// has array changed
             Message::set('Startzeiten enthalten Dubletten.', 'warning');
-            header("Location: " . DIR . "events/editResults/1");
+            header("Location: " . DIR . "events/editResults/" . $event_date_id);
             return;
         }
 
@@ -136,11 +148,11 @@ class Events extends Controller
         if($event_date_id == null) {
             $newEventDates = new Event_dates_Model();
             $eventDates = $newEventDates->all();
-            $latestEventDate = $eventDates[count($eventDates) - 1];
+            $latestEventDate = $eventDates[0];
             if($latestEventDate["date"] <= date("Y-mm-dd")) { //if latest event is already over
                 $event_date_id = $latestEventDate["id"];
             } else { //if not take the event before the latest
-                $event_date_id = $eventDates[count($eventDates) - 2]['id'];
+                $event_date_id = $eventDates[1]['id'];
             }
         }
 
@@ -191,7 +203,7 @@ class Events extends Controller
 
             if (strpos($_POST['email'], '@') === false || strlen($_POST['email']) < 6) {// email validation
                 Message::set('Bitte eine richtige E-Mail Adresse eingeben.', 'warning');
-                header("Location:" . DIR . "events/editResults/1");
+                header("Location:" . DIR . "events/editResults/" . $_POST['eventDateId']);
                 return;
             }
             
@@ -200,7 +212,7 @@ class Events extends Controller
             $row = (new Users_Model())->findByEmail($_POST['email']);
             if (count($row) == 0) {
                 Message::set('E-Mail Adresse nicht bekannt.', 'warning');
-                header("Location: " . DIR . "events/editResults/2");
+                header("Location: " . DIR ."events/editResults/" . $_POST['eventDateId']);
                 return;
             } else {                
                 $_SESSION['userId'] = $row[0]['id'];
@@ -211,7 +223,7 @@ class Events extends Controller
                
                 if($admin !== true) {                    
                     Message::set('Du bist kein Admin.', 'warning');
-                    header("Location: " . DIR . "events/editResults/2");
+                    header("Location: " . DIR ."events/editResults/" . $_POST['eventDateId']);
                     return;
                 }
 
@@ -223,7 +235,7 @@ class Events extends Controller
 
                 if ($res !== 1) {
                     Message::set("Admin Code konnte nicht erzeugt werden", "danger");
-                    header("Location:" . DIR . "events/editResults/2");
+                    header("Location:" . DIR . "events/editResults/". $_POST['eventDateId']);
                     return;
                 }
 
@@ -234,12 +246,12 @@ class Events extends Controller
                 $txt = "Dein Admincode für 1nzelzeitfahren (Training): <strong>" . $regCode . "</strong>";
                 Utils::sendMail($_SESSION["email"], $txt);
                 
-                header("Location: " . DIR . "events/editResults/2");
+                header("Location: " . DIR . "events/editResults/". $_POST['eventDateId']);
                 return;
             }
         } else {
             Message::set('Bitte eine E-Mail Adresse eingeben.', 'warning');
-            header("Location: " . DIR . "events/editResults/2");
+            header("Location: " . DIR ."events/editResults/" . $_POST['eventDateId']);
             return;
         }
     }
@@ -262,7 +274,7 @@ class Events extends Controller
             // No results found
             if (count($res) == 0) {
                 Message::set("Falscher Registrierungscode.", "warning");
-                header("Location: " . DIR . "events/editResults/2");
+                header("Location: " . DIR . "events/editResults/" . $_POST['eventDateId']);
                 return;
             }
             // Open the door as admin
@@ -271,11 +283,11 @@ class Events extends Controller
             // Delete admin code
             self::updateRegCode(NULL);
 
-            header("Location:" . DIR . "events/editResults/2");
+            header("Location:" . DIR . "events/editResults/". $_POST['eventDateId']);
             return;
         } else {
             Message::set("Ungültiger Admincode.", "warning");
-            header("Location: " . DIR . "events/editResults/2" );
+            header("Location: " . DIR ."events/editResults/" . $_POST['eventDateId'] );
             return;
         }
     }

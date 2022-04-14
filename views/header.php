@@ -57,7 +57,7 @@ session_start();
                      <a class="nav-link" href="<?= DIR ?>events/results">Ergebnisse</a>
                   </li>
                   <li class=" nav-item">
-                     <a class="nav-link" style="color:#343a40" href="<?= DIR ?>events/editResults/2">Admin</a>
+                     <a class="nav-link" style="color:#343a40" href="<?= DIR ?>events/editResults">Admin</a>
                   </li>
                </ul>
             </div>
