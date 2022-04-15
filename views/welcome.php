@@ -27,33 +27,6 @@ session_start();
         <div class="text-center" id="headprint">
             <img src="<?= DIR ?>static/img/racelogos/1zFSchriftzugGeradeTraining_white-min.svg" alt="1zF" width-max="100%">
         </div>
-        <!-- <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="<?= DIR ?>"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<?= DIR ?>">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= DIR ?>registration/index">Anmeldung</a>
-                        </li>
-                        <li class=" nav-item">
-                            <a class="nav-link" href="<?= DIR ?>athletes/rules">Ausschreibung</a>
-                        </li>
-                        <li class=" nav-item">
-                            <a class="nav-link" href="<?= DIR ?>events/participants">Teilnehmerliste</a>
-                        </li>
-                        <li class=" nav-item">
-                            <a class="nav-link" href="<?= DIR ?>events/results">Ergebnisse</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav> -->
     </header>
     <main>
         <div class="container">

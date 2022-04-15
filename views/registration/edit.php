@@ -27,7 +27,8 @@ $email = ($_SESSION['email']) ? htmlentities($_SESSION['email']) : "";
 $myGender = $data['user'][0]['gender'] ? $data['user'][0]['gender'] : "";
 $event = $data['event']['name'] ? $data['event']['name'] : "Veranstaltung nicht gefunden.";
 $date = $data['eventDate']['date'] ? $data['eventDate']['date'] : "";
-if ($date != false && strlen($date) > 0) {
+
+if ($date !== false && strlen($date) > 0) {
     $date = Utils::convertDate($data['eventDate']['date']);
 } else {
     Message::set("Zur Zeit ist die Anmeldung nicht geöffnet.", "info");

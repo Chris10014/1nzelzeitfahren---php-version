@@ -1,6 +1,6 @@
 <?php
 
-$ageGroup = Utils::ageGroup($data["registration"]["year_of_birth"]);
+$ageGroup = Utils::ageGroup($data["registration"]["date"], $data["registration"]["year_of_birth"]);
 
 ?>
 <header>
