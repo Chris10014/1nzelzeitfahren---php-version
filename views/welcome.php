@@ -10,6 +10,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?= DIR ?>static/css/style.css">
     <!-- Font Awesome Kit -->
     <script src="https://kit.fontawesome.com/c1d2775197.js" crossorigin="anonymous"></script>
     <!-- JavaScript Bundle with Popper -->
@@ -24,7 +25,7 @@ session_start();
 
 <body>
     <header>
-        <div class="text-center" id="headprint">
+        <div class="text-center headprint">
             <img src="<?= DIR ?>static/img/racelogos/1zFSchriftzugGeradeTraining_white-min.svg" alt="1zF" width-max="100%">
         </div>
     </header>
@@ -83,9 +84,9 @@ session_start();
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="text-center">
-            <p><img class="img-fluid m-5" src="<?= DIR ?>static/img/racelogos/winnerWheel_2021.png" alt="Siegertafel" width-max="100%"></p>
+            <div class="text-center">
+                <p><img class="headprint mt-5" src="<?= DIR ?>static/img/racelogos/winnerWheel_2021.png" alt="Siegertafel" width-max="100%"></p>
+            </div>
         </div>
     </main>
     <footer></footer>

@@ -6,3 +6,4 @@ docker-compose.yaml
 Dockerfile
 phpinfo.php
 data.sql/
+.htaccess

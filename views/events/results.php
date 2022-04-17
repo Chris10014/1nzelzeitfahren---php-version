@@ -32,44 +32,44 @@
             <table class="table table-dark" id="results">
                 <thead>
                     <tr>
-                        <th>Nr.</th>
+                        <th class="d-none d-md-table-cell">Nr.</th>
                         <th>Platz</th>
                         <th>Name</th>
-                        <th>AK</th>
-                        <th>Verein</th>
+                        <th class="d-none d-md-table-cell">AK</th>
+                        <th class="d-none d-sm-table-cell">Verein</th>
                         <th>Zeit</th>
                     </tr>
                 </thead>
-                <tbody id="resultsTableBody">
-                    <?php
-                    $gender = GENDER;
-                    for ($i = 0; $i < count($gender); $i++) {
-                        if (count($data['results' . $gender[$i]]) > 0) {
-                            $rankCounter = 0;
-                            echo "<tr><td colspan='6'>";
-                            echo Utils::fullGender($gender[$i]);
-                            echo "</td></tr>";
-                            foreach ($data['results' . $gender[$i]] as $res) {
-                                if (isset($res['netto_finish_time']) && $res['netto_finish_time'] != "00:00:00") {
-                                    $rankCounter++;
-                                    $rank = $rankCounter;
-                                    $time = $res['netto_finish_time'];
+                <tbody id=" resultsTableBody">
+                            <?php
+                            $gender = GENDER;
+                            for ($i = 0; $i < count($gender); $i++) {
+                                if (count($data['results' . $gender[$i]]) > 0) {
+                                    $rankCounter = 0;
+                                    echo "<tr><td colspan='6'>";
+                                    echo Utils::fullGender($gender[$i]);
+                                    echo "</td></tr>";
+                                    foreach ($data['results' . $gender[$i]] as $res) {
+                                        if (isset($res['netto_finish_time']) && $res['netto_finish_time'] != "00:00:00") {
+                                            $rankCounter++;
+                                            $rank = $rankCounter;
+                                            $time = $res['netto_finish_time'];
 
-                                    $ageGroup = Utils::ageGroup($data['event']['date'], $res['year_of_birth']);
-                                    echo "<tr>
-                <td>" . $res['number'] . "</td>
+                                            $ageGroup = Utils::ageGroup($data['event']['date'], $res['year_of_birth']);
+                                            echo "<tr>
+                <td class='d-none d-md-table-cell'>" . $res['number'] . "</td>
                 <td>" . $rank . "</td>
                 <td>" . htmlentities($res['first_name']) . " " . htmlentities($res['last_name']) . "</td>
-                <td>" . $res['gender'] . " " . $ageGroup . "</td>
-                <td>" . htmlentities($res['team_name']) . "</td>
+                <td class='d-none d-md-table-cell'>" . $res['gender'] . " " . $ageGroup . "</td>
+                <td class='d-none d-sm-table-cell'>" . htmlentities($res['team_name']) . "</td>
                 <td>" . $time . "</td>
                 </tr>";
+                                        }
+                                    }
                                 }
                             }
-                        }
-                    }
-                    ?>
-                </tbody>
+                            ?>
+                            </tbody>
             </table>
         </section>
         <section>

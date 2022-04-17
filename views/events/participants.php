@@ -8,35 +8,35 @@
         <section>
             <h2><?= $data['event']['name'] ?> am <?= Utils::convertDate($data['eventDate']) ?></h2>
             <?php
-            if(count($data['participants']) > 0) {
+            if (count($data['participants']) > 0) {
             ?>
-            <table class="table table-dark" id="participants">
-                <thead>
-                    <tr>
-                        <th>Nr.</th>
-                        <th>Startzeit</th>
-                        <th>Name</th>
-                        <th>AK</th>
-                        <th>Verein</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $gender = GENDER;
-                    foreach ($data['participants'] as $part) {
-                        $ageGroup = Utils::ageGroup($data['event']['date'], $part['year_of_birth']);
-                        $number = $part['number'] ? $part['number'] : "tbd";
-                        echo "<tr>
+                <table class="table table-dark" id="participants">
+                    <thead>
+                        <tr>
+                            <th>Nr.</th>
+                            <th>Startzeit</th>
+                            <th>Name</th>
+                            <th class="d-none d-md-table-cell">AK</th>
+                            <th class=" d-none d-sm-table-cell">Verein</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $gender = GENDER;
+                        foreach ($data['participants'] as $part) {
+                            $ageGroup = Utils::ageGroup($data['event']['date'], $part['year_of_birth']);
+                            $number = $part['number'] ? $part['number'] : "tbd";
+                            echo "<tr>
                 <td>" . $number . "</td> 
                 <td>" . $part['start_time'] . "</td>              
                 <td>" . htmlentities($part['first_name']) . " " . htmlentities($part['last_name']) . "</td>
-                <td>" . $part['gender'] . " " . $ageGroup . "</td>
-                <td>" . htmlentities($part['team_name']) . "</td>
+                <td class='d-none d-md-table-cell'>" . $part['gender'] . " " . $ageGroup . "</td>
+                <td class='d-none d-sm-table-cell'>" . htmlentities($part['team_name']) . "</td>
                 </tr>";
-                 }
-                    ?>
-                </tbody>
-            </table>
+                        }
+                        ?>
+                    </tbody>
+                </table>
             <?php
             } else {
                 echo "<div class='text-center'><p>Noch keine Teilnehmer registiert.</p></div>";
