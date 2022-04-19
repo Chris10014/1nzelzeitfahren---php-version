@@ -27,7 +27,7 @@ session_start();
 <body id="body">
 
    <div class="text-center headprint">
-      <img src="<?= DIR ?>static/img/racelogos/1zFSchriftzugGeradeTraining_white-min.svg" alt="1zF" width-max="100%">
+      <img class="m-3" src="<?= DIR ?>static/img/racelogos/1zFSchriftzugGeradeTraining_white-min.svg" alt="1zF" width-max="100%">
    </div>
    <div class="container">
 

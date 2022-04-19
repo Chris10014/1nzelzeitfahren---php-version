@@ -132,11 +132,12 @@ class Registration extends Controller
             "first_name" => $_REQUEST['first_name'],
             "name" => $_REQUEST['name'],
             "gender" => $_REQUEST['gender'],
+            "hideLastName" => $_REQUEST['hideLastName'] ? 1 : "",
             "year_of_birth" => $_REQUEST['yearOfBirth'],
             "team_id" => $teamId,
         );
         $where = array("id" => $_SESSION['userId']);
-
+        
         $newUser = new Users_Model();
         $newUser->updateColumns($data, $where);
 
@@ -151,8 +152,9 @@ class Registration extends Controller
         }
         $data["user_id"] = $_SESSION['userId'];
         $data["event_date_id"] = $_SESSION['eventDateId'];
+        $data["for_Team_id"] = $teamId;
         $data["confirmed_terms_and_conditions_at"] = date("Y-m-d H:i:s");
-
+       
         $newActivity = new Users_have_events_Model();
         $activity = $newActivity->insert($data);
         

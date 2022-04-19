@@ -59,7 +59,7 @@
                                             echo "<tr>
                 <td class='d-none d-md-table-cell'>" . $res['number'] . "</td>
                 <td>" . $rank . "</td>
-                <td>" . htmlentities($res['first_name']) . " " . htmlentities($res['last_name']) . "</td>
+                <td>" . htmlentities($res['first_name']) . " " . ($res['hideLastName'] ? (htmlentities($res['last_name'][0]) . ".") : htmlentities($res['last_name'])) . "</td>
                 <td class='d-none d-md-table-cell'>" . $res['gender'] . " " . $ageGroup . "</td>
                 <td class='d-none d-sm-table-cell'>" . htmlentities($res['team_name']) . "</td>
                 <td>" . $time . "</td>
@@ -81,7 +81,7 @@
             <ul>
                 <?php
                 foreach ($data['supporter'] as $supporter) {
-                    echo "<li>" . htmlentities($supporter['first_name']) . " " . htmlentities($supporter["last_name"]);
+                    echo "<li>" . htmlentities($supporter['first_name']) . " " . ($supporter['hideLastName'] ? (htmlentities($supporter['last_name'][0]) . ".") : htmlentities($supporter['last_name']));
                     if (isset($supporter["team_name"]) && strlen($supporter["team_name"]) > 0) {
                         echo " (" . htmlentities($supporter["team_name"]) . ")";
                     }
