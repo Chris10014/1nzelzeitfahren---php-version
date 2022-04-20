@@ -73,7 +73,7 @@ class Events_Model extends Model
         $prepared_sql = "SELECT *, u.name AS last_name, t.name AS team_name 
         FROM users_have_events AS e
         JOIN users AS u ON u.id = e.user_id 
-        LEFT JOIN teams AS t ON e.for_Team_id = t.id
+        LEFT JOIN teams AS t ON e.for_team_id = t.id
         WHERE e.event_date_id = :edid AND e.participant = :yes AND u.gender LIKE :gen
         ORDER BY start_time ASC, number ASC, ISNULL(estimated_finish_time), estimated_finish_time ASC, last_name ASC";
         $data = array(":edid" => $event_date_id, ":yes" => 1, ":gen" => $gender);
@@ -92,7 +92,7 @@ class Events_Model extends Model
         $prepared_sql = "SELECT *, u.name AS last_name, t.name AS team_name 
         FROM users_have_events AS e
         JOIN users AS u ON u.id = e.user_id 
-        LEFT JOIN teams AS t ON e.for_Team_id = t.id
+        LEFT JOIN teams AS t ON e.for_team_id = t.id
         WHERE e.event_date_id = :edid AND e.support = :yes
         ORDER BY last_name ASC";
         $data = array(":edid" => $event_date_id, ":yes" => 1);
@@ -113,7 +113,7 @@ class Events_Model extends Model
         $prepared_sql = "SELECT *, u.name AS last_name, t.name AS team_name
         FROM users_have_events AS e
         JOIN users AS u ON u.id = e.user_id 
-        LEFT JOIN teams AS t ON e.for_Team_id = t.id
+        LEFT JOIN teams AS t ON e.for_team_id = t.id
         WHERE e.event_date_id = :edid AND e.participant = :yes AND u.gender = :gen AND IFNULL(t.name, ' ') LIKE :team
         ORDER BY gender ASC, ISNULL(netto_finish_time), netto_finish_time ASC, last_name ASC"; // ISNULL() sorts netto_finish_times == null at the end of the list
         $data = array(":edid" => $event_date_id, ":yes" => 1, ":gen" => $gender, ":team" => "%" . $team_name . "%");
