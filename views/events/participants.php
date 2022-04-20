@@ -29,7 +29,7 @@
                             echo "<tr>
                 <td>" . $number . "</td> 
                 <td>" . $part['start_time'] . "</td>              
-                <td>" . htmlentities($part['first_name']) . " " . ($part['hideLastName'] ? (htmlentities($part['last_name'][0]) . ".") : htmlentities($part['last_name'])) . "</td>
+                <td>" . htmlentities($part['first_name']) . " " . ($part['hide_last_name'] ? (htmlentities($part['last_name'][0]) . ".") : htmlentities($part['last_name'])) . "</td>
                 <td class='d-none d-md-table-cell'>" . $part['gender'] . " " . $ageGroup . "</td>
                 <td class='d-none d-sm-table-cell'>" . htmlentities($part['team_name']) . "</td>
                 </tr>";

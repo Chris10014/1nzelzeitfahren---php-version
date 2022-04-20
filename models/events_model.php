@@ -116,7 +116,7 @@ class Events_Model extends Model
         LEFT JOIN teams AS t ON e.for_Team_id = t.id
         WHERE e.event_date_id = :edid AND e.participant = :yes AND u.gender = :gen AND IFNULL(t.name, ' ') LIKE :team
         ORDER BY gender ASC, ISNULL(netto_finish_time), netto_finish_time ASC, last_name ASC"; // ISNULL() sorts netto_finish_times == null at the end of the list
-        $data = array(":edid" => $event_date_id, ":yes" => 1, ":gen" => $gender, ":team" => "%" . $team_name);
+        $data = array(":edid" => $event_date_id, ":yes" => 1, ":gen" => $gender, ":team" => "%" . $team_name . "%");
 
         return $this->_db->select($prepared_sql, $data);
     }

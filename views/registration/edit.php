@@ -9,7 +9,7 @@ if ($_SESSION['oldRequest']) {
     // Already submitted data
     $firstName = htmlentities($_SESSION['oldRequest']['first_name']);
     $name = htmlentities($_SESSION['oldRequest']['name']);
-    $hideLastName = $_SESSION['oldRequest']['hideLastName'] ? $_SESSION['oldRequest']['hideLastName'] : "";
+    $hideLastName = $_SESSION['oldRequest']['hide_last_name'] ? $_SESSION['oldRequest']['hide_last_name'] : "";
     $yearOfBirth = htmlentities($_SESSION['oldRequest']['yearOfBirth']);
     $team =  htmlentities($_SESSION['oldRequest']['team']);
     $participant = $_SESSION['oldRequest']['participant'] ? $_SESSION['oldRequest']['participant'] : "";
@@ -18,7 +18,7 @@ if ($_SESSION['oldRequest']) {
     // Existing data from the database
     $firstName = $data['user'][0]['first_name'] ? htmlentities($data['user'][0]['first_name']) : "";
     $name = ($data['user'][0]['name']) ? htmlentities($data['user'][0]['name']) : "";
-    $hideLastName = $data['user'][0]['hideLastName'] ? $data['user'][0]['hideLastName'] : "";;
+    $hideLastName = $data['user'][0]['hide_last_name'] ? $data['user'][0]['hide_last_name'] : "";;
     $yearOfBirth = ($data['user'][0]['year_of_birth']) ? htmlentities($data['user'][0]['year_of_birth']) : "";
     $team = ($data['team']['name']) ? htmlentities($data['team']['name']) : "";
     $participant = "";
@@ -84,8 +84,8 @@ if ($date !== false && strlen($date) > 0) {
 
 
             <div class="form-check offset-md-2">
-                <input type="checkbox" class="form-check-input check" name="hideLastName" id="hideLastName" value="checked" <?= $hideLastName ?> >
-                <label class="form-check-label" for="hideLastName">
+                <input type="checkbox" class="form-check-input check" name="hide_last_name" id="hide_last_name" value="checked" <?= $hideLastName ?> >
+                <label class="form-check-label" for="hide_last_name">
                     <strong>Meinen Nachnamen in den Teilnehmer- und Ergebnislisten NICHT anzeigen.</strong>
                 </label>
             </div>
@@ -100,7 +100,8 @@ if ($date !== false && strlen($date) > 0) {
             <div class="form-group row">
                 <label for="team" class="col-md-2 col-form-label">Verein:</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" name="team" id="team" placeholder="Verein" value="<?= $team ?>">
+                    <input type="text" pattern="[a-zA-Z0-9-.:()#]" class="form-control" name="team" id="team" placeholder="Verein" value="<?= $team ?>">
+               <p><small>Nur Leerzeichen, a-Z, 0-9 und - . : ( ) # verwenden.</small></p>
                 </div>
             </div>
             <div class="form-group row">

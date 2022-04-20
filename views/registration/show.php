@@ -11,7 +11,7 @@ $ageGroup = Utils::ageGroup($data["registration"]["date"], $data["registration"]
 </header>
 <main>
     <div class="container">
-        <p>Name: <?= $data["registration"]["first_name"] ?> <?= $data["registration"]["hideLastName"] ? $data["registration"]["last_name"][0] . "." : $data["registration"]["last_name"] ?></p>
+        <p>Name: <?= $data["registration"]["first_name"] ?> <?= $data["registration"]["hide_last_name"] ? $data["registration"]["last_name"][0] . "." : $data["registration"]["last_name"] ?></p>
         <p>Verein: <?= $data["registration"]["team_name"] ?></p>
         <?php
         if (isset($data["registration"]["support"])) {

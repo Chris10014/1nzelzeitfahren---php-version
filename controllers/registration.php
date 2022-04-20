@@ -132,10 +132,11 @@ class Registration extends Controller
             "first_name" => $_REQUEST['first_name'],
             "name" => $_REQUEST['name'],
             "gender" => $_REQUEST['gender'],
-            "hideLastName" => $_REQUEST['hideLastName'] ? 1 : "",
+            "hide_last_name" => $_REQUEST['hide_last_name'] ? 1 : "",
             "year_of_birth" => $_REQUEST['yearOfBirth'],
             "team_id" => $teamId,
         );
+
         $where = array("id" => $_SESSION['userId']);
         
         $newUser = new Users_Model();
@@ -152,7 +153,7 @@ class Registration extends Controller
         }
         $data["user_id"] = $_SESSION['userId'];
         $data["event_date_id"] = $_SESSION['eventDateId'];
-        $data["for_Team_id"] = $teamId;
+        $data["for_team_id"] = $teamId;
         $data["confirmed_terms_and_conditions_at"] = date("Y-m-d H:i:s");
        
         $newActivity = new Users_have_events_Model();
@@ -295,7 +296,11 @@ class Registration extends Controller
         if (!isset($data['name']) || strlen($data['name']) < 1) {
             Message::set('Bitte Nachname eingeben', 'warning');
             return false;
-        } 
+        }
+        // if (isset($data['team']) && preg_match("([a-zA-Z0-9-.:&#\s])", $data['team']) !== 1) {
+        //     Message::set('Bitte nur a-Z, 0-9 .:()- für Team verwenden', 'warning');
+        //     return false;
+        // } 
         if (!isset($data['yearOfBirth']) || !is_numeric($data['yearOfBirth'])) {
             Message::set('Bitte Jahrgang eintragen', 'warning');
             return false;
