@@ -18,7 +18,12 @@
     <div class="container">
 
         <section>
-            <h2><?= $data['event']['name'] ?> am <?= Utils::convertDate($data['event']['date']) ?></h2>
+            <h2><?= $data['event']['name'] ?> am <?= Utils::convertDate($data['event']['date']) ?>
+                <?php if (date("Y", strtotime($data['event']['date'])) == "2019") {
+                    echo "<small><sup>*</sup></small>";
+                }
+                ?>
+            </h2>
         </section>
         <section>
             <p>
@@ -71,6 +76,10 @@
                     ?>
                 </tbody>
             </table>
+            <?php if (date("Y", strtotime($data['event']['date'])) == "2019") {
+                echo "<p><small><sup>*</sup> Wegen Baustelle abgeänderte <a href='https://www.alltrails.com/explore/map/1zf-2019?u=m' target='_blank'>Strecke</a></small></p>";
+            }
+            ?>
         </section>
         <section>
             <?php
