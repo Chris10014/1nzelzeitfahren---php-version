@@ -101,7 +101,6 @@ if ($date !== false && strlen($date) > 0) {
                 <label for="team" class="col-md-2 col-form-label">Verein:</label>
                 <div class="col-md-4">
                     <input type="text" class="form-control" name="team" id="team" placeholder="Verein" value="<?= $team ?>" autocomplete="off">
-                    <p><small>Nur Leerzeichen, a-Z, 0-9 und - . : ( ) # verwenden.</small></p>
                 </div>
             </div>
             <div class="form-group row">

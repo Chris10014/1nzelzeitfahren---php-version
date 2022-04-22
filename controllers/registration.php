@@ -297,10 +297,6 @@ class Registration extends Controller
             Message::set('Bitte Nachname eingeben', 'warning');
             return false;
         }
-        // if (isset($data['team']) && preg_match("([a-zA-Z0-9-.:&#\s])", $data['team']) !== 1) {
-        //     Message::set('Bitte nur a-Z, 0-9 .:()- für Team verwenden', 'warning');
-        //     return false;
-        // } 
         if (!isset($data['yearOfBirth']) || !is_numeric($data['yearOfBirth'])) {
             Message::set('Bitte Jahrgang eintragen', 'warning');
             return false;
