@@ -12,6 +12,7 @@ if ($_SESSION['oldRequest']) {
     $hideLastName = $_SESSION['oldRequest']['hide_last_name'] ? $_SESSION['oldRequest']['hide_last_name'] : "";
     $yearOfBirth = htmlentities($_SESSION['oldRequest']['yearOfBirth']);
     $team =  htmlentities($_SESSION['oldRequest']['team']);
+    $estFinishTime = htmlentities($_SESSION['oldRequest']['estFinishTime']);
     $participant = $_SESSION['oldRequest']['participant'] ? $_SESSION['oldRequest']['participant'] : "";
     $support = $_SESSION['oldRequest']['support'] ?  $_SESSION['oldRequest']['support'] : "";
 } else {
@@ -21,6 +22,7 @@ if ($_SESSION['oldRequest']) {
     $hideLastName = $data['user'][0]['hide_last_name'] ? $data['user'][0]['hide_last_name'] : "";;
     $yearOfBirth = ($data['user'][0]['year_of_birth']) ? htmlentities($data['user'][0]['year_of_birth']) : "";
     $team = ($data['team']['name']) ? htmlentities($data['team']['name']) : "";
+    $estFinishTime = "00:00:00";
     $participant = "";
     $support = "";
     $estFinishTime = "00:00:00";

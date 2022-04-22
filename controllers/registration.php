@@ -132,7 +132,7 @@ class Registration extends Controller
             "first_name" => $_REQUEST['first_name'],
             "name" => $_REQUEST['name'],
             "gender" => $_REQUEST['gender'],
-            "hide_last_name" => $_REQUEST['hide_last_name'] ? 1 : "",
+            "hide_last_name" => $_REQUEST['hide_last_name'] ? 1 : 0,
             "year_of_birth" => $_REQUEST['yearOfBirth'],
             "team_id" => $teamId,
         );
