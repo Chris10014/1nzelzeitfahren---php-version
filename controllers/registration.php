@@ -3,6 +3,7 @@ require('models/users_model.php');
 require('models/events_model.php');
 require('models/teams_model.php');
 require('models/users_have_events_model.php');
+//Change to test deployment
 
 class Registration extends Controller
 {
