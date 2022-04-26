@@ -209,7 +209,7 @@ class Registration extends Controller
             } else {
                 $_SESSION['userId'] = $row[0]['id'];
                 $_SESSION['email'] = htmlentities($row[0]['email']);
-                $regCode = rand(1000, 9999);
+                $regCode = 6433; //rand(1000, 9999);
                 
                 $hashedRegCode = hash('md5', $regCode);
 

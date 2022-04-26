@@ -67,7 +67,7 @@
                 <td>" . htmlentities($res['first_name']) . " " . ($res['hide_last_name'] ? (htmlentities($res['last_name'][0]) . ".") : htmlentities($res['last_name'])) . "</td>
                 <td class='d-none d-md-table-cell'>" . $res['gender'] . " " . $ageGroup . "</td>
                 <td class='d-none d-sm-table-cell'>" . htmlentities($res['team_name']) . "</td>
-                <td>" . $time . "</td>
+                <td>" . date("H:i:s", strtotime($time)) . "</td>
                 </tr>";
                                 }
                             }
