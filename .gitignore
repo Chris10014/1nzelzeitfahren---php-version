@@ -7,3 +7,4 @@ Dockerfile
 phpinfo.php
 data.sql/
 .htaccess
+changelog.txt

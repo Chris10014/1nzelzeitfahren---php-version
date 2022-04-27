@@ -3,6 +3,7 @@ ob_start();
 
 // include config data
 require('config.php');
+require('constants.php');
 
 if (defined('ENVIRONMENT')) {
    switch (ENVIRONMENT) {
