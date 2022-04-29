@@ -30,7 +30,6 @@
             ?>
                  <code>
                      <?php
-                     echo "Server: " . SERVER . "<br>";
                          if(SERVER !== null && SERVER == "test") {
                              echo $_SESSION['regCode']; 
                             } else {
