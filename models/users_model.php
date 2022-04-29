@@ -59,9 +59,7 @@ class Users_Model extends Model
      * @return array
      */
     public function updateColumns($data, $where)
-    {
-        // echo "update user controller";
-        
+    {       
         return $this->_db->update("users", $data, $where);
     }
 

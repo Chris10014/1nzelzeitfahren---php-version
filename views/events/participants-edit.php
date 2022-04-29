@@ -101,7 +101,11 @@
                 ?>
                  <code>
                     <?php
-                        SERVER !== null && SERVER == "test" ? $_SESSION['adminCode'] : ""
+                        if(SERVER !== null && SERVER == "test") {
+                            echo $_SESSION['adminCode'];
+                        } else {
+                            "";
+                        }
                     ?>
                  </code>
                  <p>Es wurde ein Admin Code an Deine E-Mail Adresse: <strong><?= $_SESSION['email']; ?></strong> gesendet.

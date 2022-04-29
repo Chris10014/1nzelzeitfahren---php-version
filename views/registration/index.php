@@ -30,7 +30,13 @@
             ?>
                  <code>
                      <?php
-                         SERVER !== null && SERVER == "test" ? $_SESSION['regCode'] : "" 
+                     echo "Server: " . SERVER . "<br>";
+                         if(SERVER !== null && SERVER == "test") {
+                             echo $_SESSION['regCode']; 
+                            } else {
+                                "";
+                            }
+
                      ?>
                  </code>
                  <p>Es wurde ein 4 stelliger Registrierungs Code an Deine E-Mail Adresse: <strong><?= $_SESSION['email']; ?></strong> gesendet.
