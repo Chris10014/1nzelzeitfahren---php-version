@@ -99,7 +99,11 @@
                 if (isset($_SESSION['adminCodeCreated']) && $_SESSION['adminCodeCreated'] == 1) {
 
                 ?>
-                 <!-- <code> <?= $_SESSION['adminCode'] ?></code> -->
+                 <code>
+                    <?php
+                        SERVER !== null && SERVER == "test" ? $_SESSION['adminCode'] : ""
+                    ?>
+                 </code>
                  <p>Es wurde ein Admin Code an Deine E-Mail Adresse: <strong><?= $_SESSION['email']; ?></strong> gesendet.
                      Bitte gebe diesen Code in das untere Feld ein um zu de Adminseiten zu gelangen.</p>
 

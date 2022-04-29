@@ -28,7 +28,11 @@
                 if (isset($_SESSION['regCodeCreated']) && $_SESSION['regCodeCreated'] == 1) {
 
             ?>
-                 <code><?= $_SESSION['regCode'] ?></code>
+                 <code>
+                     <?php
+                         SERVER !== null && SERVER == "test" ? $_SESSION['regCode'] : "" 
+                     ?>
+                 </code>
                  <p>Es wurde ein 4 stelliger Registrierungs Code an Deine E-Mail Adresse: <strong><?= $_SESSION['email']; ?></strong> gesendet.
                      Bitte gebe diesen Code in das untere Feld ein um die Anmeldung fortzusetzen. Wenn Du keinen Code erhalten hast, kannst Du den Vorgang abbrechen und wiederholen.
                      Prüfe auch ob die E-Mail im SPAM Ordner Deines Postfachs liegt.</p>
