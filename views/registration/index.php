@@ -35,7 +35,6 @@
                             } else {
                                 "";
                             }
-
                      ?>
                  </code>
                  <p>Es wurde ein 4 stelliger Registrierungs Code an Deine E-Mail Adresse: <strong><?= $_SESSION['email']; ?></strong> gesendet.

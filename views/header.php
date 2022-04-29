@@ -55,10 +55,10 @@ session_start();
                      ?>
                      <a class="nav-link" href="<?= DIR ?>events/participants">Teilnehmerliste</a>
                   </li>
-                  <li class=" nav-item">
+                  <li class="nav-item">
                      <a class="nav-link" href="<?= DIR ?>events/results">Ergebnisse</a>
                   </li>
-                  <li class=" nav-item">
+                  <li class="nav-item">
                      <a class="nav-link" style="color:#343a40" href="<?= DIR ?>events/editResults">Admin</a>
                   </li>
                </ul>
@@ -70,9 +70,11 @@ session_start();
 
    <script>
       $(document).ready(function() {
-         $('.nav-link').click(function() {
-            $('.nav-link').removeClass('active');
-            $(this).addClass('active');
-         })
+         var navItems = document.getElementsByClassName("nav-link");
+         for (var i = 1; i < navItems.length; i++) { //start with 1 to exclude home url because it is part of all urls)
+            if (window.location.href.indexOf($(navItems[i]).attr("href")) !== -1) {
+               $(navItems[i]).addClass('active')
+            }
+         }
       });
    </script>
