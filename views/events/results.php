@@ -4,7 +4,7 @@
         <div class="mb-4">
             <?php
             foreach (array_reverse($data["allEventDates"]) as $eventDate) {
-                echo "<a class='btn btn-light m-1' role='button' href='";
+                echo "<a class='btn btn-light m-1 year-button' id='$eventDate[id]' role='button' href='";
                 echo DIR;
                 echo  "events/results/", $eventDate['id'], "'>";
                 echo  date("Y", strtotime($eventDate['date'])), "</a>";
@@ -30,7 +30,7 @@
             <div class="form-group row">
                 <label for="team" class="col-md-2 col-form-label">Verein oder Team:</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" name="team" id="team" placeholder="Vereins- oder Teamname" value="<?= $team ?>">
+                    <input type="text" class="form-control" name="team" id="team" placeholder="Vereins- oder Teamname" value="<?= $team ?>">  
                 </div>
             </div>
             </p>
@@ -77,7 +77,7 @@
                 </tbody>
             </table>
             <?php if (date("Y", strtotime($data['event']['date'])) == "2019") {
-                echo "<p><small><sup>*</sup> Wegen Baustelle abgeänderte <a href='https://www.alltrails.com/explore/map/1zf-2019?u=m' target='_blank'>Strecke</a></small></p>";
+                echo "<p><sup>*</sup> Wegen Baustelle abgeänderte <a href='https://www.alltrails.com/explore/map/1zf-2019?u=m' target='_blank'>Strecke</a></p>";
             }
             ?>
         </section>
@@ -103,6 +103,19 @@
 </main>
 
 <script>
+    $(document).ready(function() {
+        //collect all buttons for year selection in an array
+        var buttons = document.getElementsByClassName("year-button");
+        //loop through the array and compare button href with the current url
+        //set the button to outline == current url
+        for (var i = 0; i < buttons.length; i++) {
+            if (window.location.href == ($(buttons[i]).attr("href"))) {
+                $(buttons[i]).removeClass('btn-light')
+                $(buttons[i]).addClass('btn-outline-light')
+            }
+        }
+    });
+
     //autocomplete for team field
     $(document).ready(function() {
         $("#team").autocomplete({
