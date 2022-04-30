@@ -3,8 +3,60 @@
  */
 
 body {
+   font-family: 
+   'Lato',
+   sans-serif,
+   'PT Serif',
+   serif,
+   'Open Sans',
+   sans-serif,
+   -apple-system,
+   BlinkMacSystemFont,
+   'Segoe UI',
+   'Roboto',
+   'Oxygen',
+   'Ubuntu',
+   'Cantarell',
+   'Fira Sans',
+   'Droid Sans',
+   'Helvetica Neue',
+   sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
   
    background-color: #343a40;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-family: 'Lato', sans-serif;
+}
+
+button,
+.btn-form {
+   font-family: "Lato", sans-serif;
+}
+
+h1,
+h2 {
+   margin-bottom: 1%;
+}
+
+.card-body,
+.nav-link {
+   font-family: "Lato", sans-serif;
+}
+
+/* Format inputFields */
+input,
+label,
+.form-text,
+.text-danger {
+   font-family: 'Lato', sans-serif;
 }
 
 /* wrap the header and content (exclude the footer) in this class 
@@ -23,10 +75,6 @@ img {
 
 .no-margin-bottom {
    margin-bottom: 0;
-}
-
-h1, h2 {
-   margin-bottom: 1%;
 }
 
 header, main, footer {

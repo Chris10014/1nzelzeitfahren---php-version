@@ -22,14 +22,13 @@ session_start();
         }
     </style>
 </head>
-
-<body>
-    <header>
+<main>
+    <!-- <header>
         <div class="text-center headprint">
             <img class="m-3" src="<?= DIR ?>static/img/racelogos/1zFSchriftzugGeradeTraining_white-min.svg" alt="1zF" width-max="100%">
         </div>
-    </header>
-    <main>
+    </header> -->
+    <div class="container">
         <div class="container">
             <p><?= Message::show() ?></p>
             <div class="text-center">
@@ -88,8 +87,4 @@ session_start();
                 <p><img class="headprint mt-5" src="<?= DIR ?>static/img/racelogos/winnerWheel_2021.png" alt="Siegertafel" width-max="100%"></p>
             </div>
         </div>
-    </main>
-    <footer></footer>
-</body>
-
-</html>
+</main>

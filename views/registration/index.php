@@ -10,13 +10,13 @@
  <header class="text-center">
      <div class="container">
          <h1>Anmeldung</h1>
-         <?php 
-         if($_SESSION["eventDate"] !== null) {
-             echo "<h3>für den ";
-             echo Utils::convertDate($_SESSION["eventDate"]);
-             echo "</h3>";
-         }
-         ?>
+         <?php
+            if ($_SESSION["eventDate"] !== null) {
+                echo "<h3>für den ";
+                echo Utils::convertDate($_SESSION["eventDate"]);
+                echo "</h3>";
+            }
+            ?>
      </div><!-- / container -->
  </header>
  <main>
@@ -30,12 +30,12 @@
             ?>
                  <code>
                      <?php
-                         if(SERVER !== null && SERVER == "test") {
-                             echo $_SESSION['regCode']; 
-                            } else {
-                                "";
-                            }
-                     ?>
+                        if (SERVER !== null && SERVER == "test") {
+                            echo $_SESSION['regCode'];
+                        } else {
+                            "";
+                        }
+                        ?>
                  </code>
                  <p>Es wurde ein 4 stelliger Registrierungs Code an Deine E-Mail Adresse: <strong><?= $_SESSION['email']; ?></strong> gesendet.
                      Bitte gebe diesen Code in das untere Feld ein um die Anmeldung fortzusetzen. Wenn Du keinen Code erhalten hast, kannst Du den Vorgang abbrechen und wiederholen.

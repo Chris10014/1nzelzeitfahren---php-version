@@ -30,48 +30,48 @@ session_start();
    <div class="text-center headprint">
       <img class="m-3" src="<?= DIR ?>static/img/racelogos/1zFSchriftzugGeradeTraining_white-min.svg" alt="1zF" width-max="100%">
    </div>
-   <div class="container">
 
-      <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-         <div class="container-fluid">
-            <a class="navbar-brand" href="<?= DIR ?>"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-               <ul class="navbar-nav mx-auto">
-                  <li class="nav-item">
-                     <a class="nav-link" aria-current="page" href="<?= DIR ?>">Home</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="<?= DIR ?>registration/index">Anmeldung</a>
-                  </li>
-                  <li class=" nav-item">
-                     <a class="nav-link" href="<?= DIR ?>athletes/rules">Ausschreibung</a>
-                  </li>
-                  <li class=" nav-item">
-                     <?php
+   <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+      <div class="container-fluid">
+         <a class="navbar-brand" href=""></a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+               <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="<?= DIR ?>welcome">Home</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="<?= DIR ?>registration/index">Anmeldung</a>
+               </li>
+               <li class=" nav-item">
+                  <a class="nav-link" href="<?= DIR ?>athletes/rules">Ausschreibung</a>
+               </li>
+               <li class=" nav-item">
+                  <?php
 
-                     ?>
-                     <a class="nav-link" href="<?= DIR ?>events/participants">Teilnehmerliste</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="<?= DIR ?>events/results">Ergebnisse</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" style="color:#343a40" href="<?= DIR ?>events/editResults">Admin</a>
-                  </li>
-               </ul>
-            </div>
+                  ?>
+                  <a class="nav-link" href="<?= DIR ?>events/participants">Teilnehmerliste</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="<?= DIR ?>events/results">Ergebnisse</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" style="color:#343a40" href="<?= DIR ?>events/editResults">Admin</a>
+               </li>
+            </ul>
          </div>
-      </nav>
-
-   </div>
+      </div>
+   </nav>
 
    <script>
       $(document).ready(function() {
+         //collect all nav-links in an array
          var navItems = document.getElementsByClassName("nav-link");
-         for (var i = 1; i < navItems.length; i++) { //start with 1 to exclude home url because it is part of all urls)
+         //loop through the array and compare nav href with the current url
+         //set the nav-link to active == current url
+         for (var i = 0; i < navItems.length; i++) {
             if (window.location.href.indexOf($(navItems[i]).attr("href")) !== -1) {
                $(navItems[i]).addClass('active')
             }
