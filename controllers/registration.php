@@ -168,7 +168,7 @@ class Registration extends Controller
             $txt = $_REQUEST['first_name'] . " " . $_REQUEST['name'] . " hat sich zum 1nzelzeitfahren (Training) angemeldet.";
             Utils::sendMail("c.lansche@t-online.de", $txt);
 
-            $txt = "Hallo " . $_REQUEST['first_name'] . " schön, dass du dich zum 1nzelzeitfahren (Training) angemeldet hast. Wir wünschen dir viel Spaß und Erfolg!";
+            $txt = "Hallo " . $_REQUEST['first_name'] . ", \nschön, dass du dich zum 1nzelzeitfahren (Training) angemeldet hast. \nWir wünschen dir viel Spaß und Erfolg!";
             Utils::sendMail($_SESSION['email'], $txt);
 
             return;
