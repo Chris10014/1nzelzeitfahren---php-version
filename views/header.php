@@ -30,11 +30,11 @@ session_start();
    <div class="text-center headprint">
       <img class="m-3" src="<?= DIR ?>static/img/racelogos/1zFSchriftzugGeradeTraining_white-min.svg" alt="1zF" width-max="100%">
    </div>
-   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+   <nav class="navbar navbar-expand-lg navbar-dark table-dark sticky-top">
 
       <div class="container-fluid">
          <a class="navbar-brand" href="<?= DIR ?>welcome">
-            <img src="<?= DIR ?>static/img/racelogos/1zF_Logo_rubberstamp-min.svg" height="30" alt="1zF">
+            <img src="<?= DIR ?>static/img/racelogos/1zf_Logo_ws_rubberstamp.png" height="30" alt="1zF">
          </a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -58,9 +58,6 @@ session_start();
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="<?= DIR ?>events/results">Ergebnisse</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" style="color:#ffffff" href="<?= DIR ?>events/editResults">Admin</a>
                </li>
             </ul>
          </div>
