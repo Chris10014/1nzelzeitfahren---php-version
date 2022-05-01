@@ -4,7 +4,7 @@
         <div class="mb-4">
             <?php
             foreach (array_reverse($data["allEventDates"]) as $eventDate) {
-                echo "<a class='btn btn-light m-1 year-button' id='$eventDate[id]' role='button' href='";
+                echo "<a class='btn btn-light m-1 js-year-btn' id='$eventDate[id]' role='button' href='";
                 echo DIR;
                 echo  "events/results/", $eventDate['id'], "'>";
                 echo  date("Y", strtotime($eventDate['date'])), "</a>";
@@ -105,7 +105,7 @@
 <script>
     $(document).ready(function() {
         //collect all buttons for year selection in an array
-        var buttons = document.getElementsByClassName("year-button");
+        var buttons = document.getElementsByClassName("js-year-btn");
         //loop through the array and compare button href with the current url
         //set the button to outline == current url
         for (var i = 0; i < buttons.length; i++) {
