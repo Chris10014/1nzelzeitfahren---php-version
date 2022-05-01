@@ -87,9 +87,9 @@ class Utils
      * @param str $txt Inhaltstext der E-Mail
      * @return versendet E-Mail
      */
-    public static function sendMail($to, $txt)
+    public static function sendMail($to, $txt, $sub = "1nzelzeitfahren (Training)")
     {
-        $subject = "1nzelzetfahren (Training)";
+        $subject = $sub;
        
         $headers  = "MIME-Version: 1.0\r\n";
         $headers .= "Content-type: text/html; charset=utf-8\r\n";

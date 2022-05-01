@@ -166,10 +166,10 @@ class Registration extends Controller
             header("Location:" . DIR . "registration/show/" . $_SESSION["userId"] . "/" .  $_SESSION['eventDateId']);
 
             $txt = $_REQUEST['first_name'] . " " . $_REQUEST['name'] . " hat sich zum 1nzelzeitfahren (Training) angemeldet.";
-            Utils::sendMail("c.lansche@t-online.de", $txt);
+            Utils::sendMail("c.lansche@t-online.de", $txt, "IzF neue Anmeldung");
 
-            $txt = "Hallo " . $_REQUEST['first_name'] . ", \nschön, dass du dich zum 1nzelzeitfahren (Training) angemeldet hast. \nWir wünschen dir viel Spaß und Erfolg!";
-            Utils::sendMail($_SESSION['email'], $txt);
+            $txt = "Hallo " . $_REQUEST['first_name'] . ", \r\nschön, dass du dich zum 1nzelzeitfahren (Training) angemeldet hast. \r\nWir wünschen dir viel Spaß und Erfolg!";
+            Utils::sendMail($_SESSION['email'], $txt, "1zF Anmeldung");
 
             return;
         } else {
@@ -235,7 +235,7 @@ class Registration extends Controller
                 $_SESSION['regCode'] = $regCode; // for test only
 
                 $txt = "Dein Registrierungscode für die Anmeldung zum 1nzelzeitfahren (Training): <strong>" . $regCode . "</strong>";
-                Utils::sendMail($_SESSION["email"], $txt);
+                Utils::sendMail($_SESSION["email"], $txt, "1zF Registrierungscode");
 
                 header("Location: " . DIR ."registration/index/" . $_SESSION['eventId']);
                 return;
