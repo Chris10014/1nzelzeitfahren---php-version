@@ -8,3 +8,4 @@ phpinfo.php
 data.sql/
 .htaccess
 changelog.txt
+errorlog.html
