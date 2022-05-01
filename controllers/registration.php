@@ -16,9 +16,10 @@ class Registration extends Controller
     {
         $newEvent = new Events_Model();
         $event = $newEvent->regOpen(); //find event with active registration phase
-        if($event !== null) {
-            $_SESSION['eventId'] = $event["event_id"];
-            $_SESSION['eventDate'] = $event["date"];
+        if($event !== null) {           
+                $_SESSION['eventId'] = $event["event_id"];
+                $_SESSION['eventDate'] = $event["date"];
+            
             $data['eventId'] = $event["id"];
         } else {
             $data['eventId'] = null;

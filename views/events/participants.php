@@ -1,4 +1,4 @@
-<header>
+<header class="text-center">
     <div class="container">
         <h1>Teilnehmerliste</h1>
     </div><!-- / container -->

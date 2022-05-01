@@ -6,18 +6,23 @@
     }
     ?>
 
- <header>
+ <header class="text-center">
      <div class="container">
-         <div class="mb-4">
-             <?php
-                foreach (array_reverse($data["allEventDates"]) as $eventDate) {
-                    echo "<a class='btn btn-light m-1' role='button' href='";
-                    echo DIR;
-                    echo  "events/editResults/", $eventDate['id'], "'>";
-                    echo  date("Y", strtotime($eventDate['date'])), "</a>";
-                }
-                ?>
-         </div>
+         <?php
+            if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1) {
+            ?>
+             <div class="mb-4">
+                 <?php
+                    foreach (array_reverse($data["allEventDates"]) as $eventDate) {
+                        echo "<a class='btn btn-light m-1 js-year-btn' role='button' href='";
+                        echo DIR;
+                        echo  "events/editResults/", $eventDate['id'], "'>";
+                        echo  date("Y", strtotime($eventDate['date'])), "</a>";
+                    }
+                    ?>
+             </div>
+         <?php } ?>
+
          <h1>Ergebnisse eintragen</h1>
      </div><!-- / container -->
  </header>
@@ -51,7 +56,7 @@
                                     $ageGroup = Utils::ageGroup($data['event']['date'], $part['year_of_birth']);
                                     $number = $part['number'] ? $part['number'] : "tbd";
                                     $estimatedFinishTime = $part['estimated_finish_time'] ? $part['estimated_finish_time'] : "00:00:00";
-                                    $bruttoFinishTime = $part['brutto_finish_time'];            
+                                    $bruttoFinishTime = $part['brutto_finish_time'];
                                     echo "
                
 
@@ -100,13 +105,13 @@
 
                 ?>
                  <code>
-                    <?php
-                        if(SERVER !== null && SERVER == "test") {
+                     <?php
+                        if (SERVER !== null && SERVER == "test") {
                             echo $_SESSION['adminCode'];
                         } else {
                             "";
                         }
-                    ?>
+                        ?>
                  </code>
                  <p>Es wurde ein Admin Code an Deine E-Mail Adresse: <strong><?= $_SESSION['email']; ?></strong> gesendet.
                      Bitte gebe diesen Code in das untere Feld ein um zu de Adminseiten zu gelangen.</p>
@@ -148,3 +153,18 @@
             ?>
      </div><!-- / container -->
  </main>
+ <script>
+     $(document).ready(function() {
+         //collect all buttons for year selection in an array
+         var buttons = document.getElementsByClassName("js-year-btn");
+
+         //loop through the array and compare button href with the current url
+         //set the button to outline == current url
+         for (var i = 0; i < buttons.length; i++) {
+             if (window.location.href == ($(buttons[i]).attr("href"))) {
+                 $(buttons[i]).removeClass('btn-light');
+                 $(buttons[i]).addClass('btn-outline-light');
+             }
+         }
+     });
+ </script>

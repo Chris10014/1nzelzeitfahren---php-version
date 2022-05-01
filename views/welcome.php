@@ -1,27 +1,5 @@
-<?php
-session_start();
-?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= DIR ?>static/css/style.css">
-    <!-- Font Awesome Kit -->
-    <script src="https://kit.fontawesome.com/c1d2775197.js" crossorigin="anonymous"></script>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <title>1nzelzeitahren - <?= SITETITLE ?></title>
-    <style>
-        body {
-            background-color: #343a40;
-        }
-    </style>
-</head>
 <main>
     <!-- <header>
         <div class="text-center headprint">
@@ -37,9 +15,14 @@ session_start();
                         <div class="card ">
                             <a style="color: black" href="<?= DIR ?>registration/index">
                                 <div class="card-body">
-
                                     <span><i class="fas fa-clipboard-list fa-4x"></i></span>
-                                    <div class="text-center">Anmeldung</div>
+                                    <div class="text-center">Anmeldung 
+                                        <?php 
+                                           if(isset($_SESSION['eventDate'])) {
+                                            echo  "für " . Utils::convertDate($_SESSION["eventDate"]);
+                                        } 
+                                        ?>                                           
+                                    </div>
 
                                 </div>
                             </a>

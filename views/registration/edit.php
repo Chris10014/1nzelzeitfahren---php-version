@@ -41,7 +41,7 @@ if ($date !== false && strlen($date) > 0) {
 }
 
 ?>
-<header>
+<header class="text-center">
     <div class="container">
         <h1>Anmeldung</h1>
         <p>

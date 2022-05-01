@@ -1,4 +1,4 @@
-<header>
+<header class="text-center">
 
     <div class="container">
         <div class="mb-4">
@@ -11,7 +11,7 @@
             }
             ?>
         </div>
-        <h1>Ergebnisse</h1>
+        <h1>Ergebnisse <?=  date("Y", strtotime($data['event']['date'])) ?></h1>
     </div>
 </header>
 <main>
@@ -30,7 +30,7 @@
             <div class="form-group row">
                 <label for="team" class="col-md-2 col-form-label">Verein oder Team:</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" name="team" id="team" placeholder="Vereins- oder Teamname" value="<?= $team ?>">  
+                    <input type="text" class="form-control" name="team" id="team" placeholder="Vereins- oder Teamname" value="<?= $team ?>">
                 </div>
             </div>
             </p>

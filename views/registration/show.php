@@ -3,7 +3,7 @@
 $ageGroup = Utils::ageGroup($data["registration"]["date"], $data["registration"]["year_of_birth"]);
 
 ?>
-<header>
+<header class="text-center">
     <div class="container">
         <h1>Deine Anmeldung</h1>
         <h1><?= $data["registration"]["event_name"] ?> am <?php echo Utils::convertDate($data['registration']["date"]); ?></h1>

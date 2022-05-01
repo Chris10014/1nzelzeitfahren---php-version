@@ -1,4 +1,4 @@
-<header>
+<header class="text-center">
     <div class="container">
         <h1>Ausschreibung und Regeln</h1>
     </div>
@@ -47,11 +47,11 @@
             </p>
             <h2>Ort und Zeit</h2>
             <p>
-                Datum: <?php if($_SESSION["eventDate"] !== null) {
-                    echo Utils::convertDate($_SESSION["eventDate"]);
-                 } else {
-                    echo "noch nicht terminiert";
-                 } ?> <br>
+                Datum: <?php if (isset($_SESSION["eventDate"])) {
+                            echo Utils::convertDate($_SESSION["eventDate"]);
+                        } else {
+                            echo "noch nicht terminiert";
+                        } ?> <br>
                 Start: erster Start erfolgt um 8:00h (Änderungen vorbehalten). Weitere Startzeiten bitte der Teilnehmerliste entnehmen.<br>
                 Ort: Ortsausgang Vockenhausen in Richtung Ehlhalten<br><br>
                 Gemeinsames Frühstück am Anschluss (auf eigene Rechnung).

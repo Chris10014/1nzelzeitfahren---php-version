@@ -1,4 +1,4 @@
-<header>
+<header class="text-center">
     <h1>Events</h1>
 </header>
 <main>

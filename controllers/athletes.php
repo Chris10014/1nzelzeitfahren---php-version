@@ -1,5 +1,5 @@
 <?php
-
+require('models/events_model.php');
 
 class Athletes extends Controller
 {
@@ -14,6 +14,17 @@ class Athletes extends Controller
     
     public function rules()
     {
+
+        $newEvent = new Events_Model();
+        $event = $newEvent->regOpen(); //find event with active registration phase
+        if ($event !== null ) {           
+                $_SESSION['eventId'] = $event["event_id"];
+                $_SESSION['eventDate'] = $event["date"];
+        } else {
+            $_SESSION['eventId'] = null;
+            $_SESSION['eventDate'] = null;
+        }
+
         $data['title'] = 'Regeln';
 
         $this->_view->render('header', $data);
