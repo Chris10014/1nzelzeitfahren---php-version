@@ -1,3 +1,0 @@
-Documentation
-https://beier.f4.htw-berlin.de/wiki/php/simple-mvc/
-
