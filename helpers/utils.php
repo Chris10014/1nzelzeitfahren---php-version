@@ -93,11 +93,11 @@ class Utils
        
         $headers  = "MIME-Version: 1.0\r\n";
         $headers .= "Content-type: text/html; charset=utf-8\r\n";
-        $headers .= "From: anmeldung@1nzelzeitfahren.de";
+        $headers .= "From: info@tracemyrace.com";
 
         // use wordwrap() if lines are longer than 70 characters
         $txt = wordwrap($txt, 70);
-        
+    
         mail($to, $subject, $txt, $headers);
     }
 }
