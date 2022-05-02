@@ -2,10 +2,13 @@
 
     <section class="no-margin-bottom">
         <nav class="no-margin-bottom navbar navbar-expand-md navbar-dark table-dark">
+            <div class="navbar-brand">
+                <img src="<?= DIR ?>static/img/racelogos/Logo_final_wappen_senkrecht_rubberstamp_ws.svg" width="5%" alt="TSG Eppstein Triathlon" />
+            </div>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><img class="ml-4" src="<?= DIR ?>static/img/racelogos/Logo_final_wappen_senkrecht_rubberstamp_ws.svg" width="5%" alt="TSG Eppstein Triathlon" /></li>
+                <li class="nav-item"></li>
                 <li class="nav-item"><a class="nav-link" href='<?= DIR ?>athletes/contact'>Kontakt</a></li>
-                <li class="nav-item"><a class="nav-link" href=' #'>Impressum</a></li>
+                <li class="nav-item"><a class="nav-link" href='#'>Impressum</a></li>
                 <li class="nav-item"><a class="nav-link" href='<?= DIR ?>athletes/privacy'>Datenschutz</a></li>
             </ul>
         </nav>
