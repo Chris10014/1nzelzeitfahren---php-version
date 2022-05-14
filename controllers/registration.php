@@ -166,7 +166,7 @@ class Registration extends Controller
             unset($_SESSION['oldRequest']);            
             header("Location:" . DIR . "registration/show/" . $_SESSION["userId"] . "/" .  $_SESSION['eventDateId']);
 
-            $txt = $_REQUEST['first_name'] . " " . $_REQUEST['name'] . " hat sich zum 1nzelzeitfahren (Training) angemeldet.";
+            $txt = $_REQUEST['first_name'] . " " . $_REQUEST['name'] . " (mit email: " . $_SESSION["email"] . ") hat sich zum 1nzelzeitfahren (Training) angemeldet.";
             Utils::sendMail("c.lansche@t-online.de", $txt, "IzF neue Anmeldung");
 
             $txt = "Hallo " . $_REQUEST['first_name'] . ", \r\nschön, dass du dich zum 1nzelzeitfahren (Training) angemeldet hast. \r\nWir wünschen dir viel Spaß und Erfolg!";
