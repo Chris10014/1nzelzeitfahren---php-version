@@ -36,7 +36,8 @@
                     }
                     if (
                         stripos($_SESSION['email'], "@web.de") ||
-                        stripos($_SESSION['email'], "@gmx.de")
+                        stripos($_SESSION['email'], "@gmx.de") ||
+                        stripos($_SESSION['email'], "@mail.de")
                     ) {
                         echo "<p>Bitte gib den Code <strong>" . $_SESSION['regCode'] . "</strong> in das untere Feld ein.</p>";
                     } else {
