@@ -140,12 +140,14 @@ $html = '
             $html .= '<small> ' . $data["team"] . '</small></p>';
         };
 
-$html .= '<p> hat ';
+$html .= '<p> ';
         if ($data['teamCompetition'] == 1) {
-            $html .= 'bei der ' . $data["team"] . ' Vereinswertung </p>';
+            $html .= 'hat in der ' . $data["team"] . ' Vereinswertung </p>';
+        } else {
+            $html .= 'hat ';
         }; 
-$html .= '<p>in <b><u>' . $data["time"] . '</u></b> den<br /><b><u>'
-            . $data["rank"] . '. Platz</u></b><small> (' . $data["gender"] . ')</small><br />
+$html .= 'mit <b>' . $data["time"] . '</b> <br />über 16,5 km Zeitfahren den<br /><b>'
+            . $data["rank"] . '.</b><small> Platz (' . $data["gender"] . ')</small><br />
             belegt.
         </p>              
             <b>Herzliche Glückwünsche zu<br />Deiner Leistung.</b>
