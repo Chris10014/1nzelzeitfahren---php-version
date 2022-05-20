@@ -10,4 +10,4 @@ data.sql/
 changelog.txt
 errorlog.html
 vendor
-!vendor/tecnickcom/tcpdf/config
+!vendor/tecnickcom/tcpdf/config/
