@@ -11,7 +11,7 @@
             }
             ?>
         </div>
-        <h1>Ergebnisse <?=  date("Y", strtotime($data['event']['date'])) ?></h1>
+        <h1>Ergebnisse <?= date("Y", strtotime($data['event']['date'])) ?></h1>
     </div>
 </header>
 <main>
@@ -43,6 +43,7 @@
                         <th class="d-none d-md-table-cell">AK</th>
                         <th class="d-none d-sm-table-cell">Verein</th>
                         <th>Zeit</th>
+                        <th>Urkunde</th>
                     </tr>
                 </thead>
                 <tbody id="resultsTableBody">
@@ -50,9 +51,11 @@
                     $gender = GENDER;
                     for ($i = 0; $i < count($gender); $i++) {
                         if (count($data['results' . $gender[$i]]) > 0) {
+
                             $rankCounter = 0;
                             echo "<tr><td colspan='6'>";
                             echo Utils::fullGender($gender[$i]);
+
                             echo "</td></tr>";
                             foreach ($data['results' . $gender[$i]] as $res) {
                                 if (isset($res['netto_finish_time']) && $res['netto_finish_time'] != "00:00:00") {
@@ -62,13 +65,24 @@
 
                                     $ageGroup = Utils::ageGroup($data['event']['date'], $res['year_of_birth']);
                                     echo "<tr>
-                <td class='d-none d-md-table-cell'>" . $res['number'] . "</td>
-                <td>" . $rank . "</td>
-                <td>" . htmlentities($res['first_name']) . " " . ($res['hide_last_name'] ? (htmlentities($res['last_name'][0]) . ".") : htmlentities($res['last_name'])) . "</td>
-                <td class='d-none d-md-table-cell'>" . $res['gender'] . " " . $ageGroup . "</td>
-                <td class='d-none d-sm-table-cell'>" . htmlentities($res['team_name']) . "</td>
-                <td>" . date("H:i:s", strtotime($time)) . "</td>
-                </tr>";
+                                        <td class='d-none d-md-table-cell'>" . $res['number'] . "</td>
+                                        <td>" . $rank . "</td>
+                                        <td>" . htmlentities($res['first_name']) . " " . ($res['hide_last_name'] ? (htmlentities($res['last_name'][0]) . ".") : htmlentities($res['last_name'])) . "</td>
+                                        <td class='d-none d-md-table-cell'>" . $res['gender'] . " " . $ageGroup . "</td>
+                                        <td class='d-none d-sm-table-cell'>" . htmlentities($res['team_name']) . "</td>
+                                        <td>" . date("H:i:s", strtotime($time)) . "</td>
+                                        <td class='text-center'> <a href='" . DIR . "athletes/certificate?firstName="
+                                        . $res['first_name']
+                                        . "&lastName=" . $res['last_name']
+                                        . "&gender=" . $gender[$i]
+                                        . "&rank=" . $rank
+                                        . "&time=" . $time
+                                        . "&team=" . $res['team_name']
+                                        . "&date=" . strftime("%d.%m.%Y", strtotime($data['event']['date'])) .
+                                        "'><i class='fas fa-file-pdf fa-lg'></i>
+                                         </a>
+                                         </td>
+                                    </tr>";
                                 }
                             }
                         }
@@ -124,7 +138,15 @@
     });
     // Vereinsfilter für Ergebnisse
     $(document).ready(function() {
+        var eventDate = '<?= $data['event']['date'] ?>'
+        var date = new Intl.DateTimeFormat("de-DE", {
+            year: "numeric",
+            month: "short",
+            day: "2-digit",
+        }).format(new Date(Date.parse(eventDate)))
+
         $("#team").keyup(function() {
+           
             $.getJSON(
                 '<?= DIR ?>events/resultsPerTeam/<?= $data['eventDateId'] ?>/' + $("#team").val(),
                 function(data) {
@@ -137,6 +159,7 @@
                                 var rankCounter = 0;
                                 var results = data["results" + gender];
                                 var fullGender = fullgender(gender);
+                                var teamCompetition = 1;
                                 tableBody += "<tr><td colspan='6'>" + fullGender + "</td></tr>";
                                 results.forEach(function(item, index) {
                                     if (
@@ -164,7 +187,16 @@
                                         "<td>" + item.first_name + " " + item.last_name + "</td>";
                                     tableBody += "<td class='d-none d-md-table-cell'>" + gender + " " + ageGroup + "</td>";
                                     tableBody += "<td class='d-none d-sm-table-cell'>" + teamName + "</td>";
-                                    tableBody += "<td>" + finishTime + "</td></tr>";
+                                    tableBody += "<td>" + finishTime + "</td>";
+                                    tableBody += "<td class='text-center'><a href='<?= DIR ?>athletes/certificate?date=" +
+                                        date + "&firstName=" +
+                                        item.first_name + "&lastName=" +
+                                        item.last_name + "&rank=" +
+                                        rank + "&time=" +
+                                        finishTime + "&team=" +
+                                        teamName + "&gender=" +
+                                        gender + "&teamCompetition=" +
+                                        teamCompetition + "'><i class='fas fa-file-pdf fa-lg'></i></a></td></tr>";
                                 });
                             }
                         }

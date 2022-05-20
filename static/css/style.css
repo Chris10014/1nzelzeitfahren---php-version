@@ -2,7 +2,7 @@
  Bootstrap (minified): https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
  */
 
-body {
+html, body {
    font-family: 
    'Lato',
    sans-serif,
@@ -25,6 +25,14 @@ body {
    -moz-osx-font-smoothing: grayscale;
   
    background-color: #343a40;
+}
+
+.page-holder {
+   height: 100px; 
+}
+
+.bg-cover {
+   background-size: cover !important;
 }
 
 h1,

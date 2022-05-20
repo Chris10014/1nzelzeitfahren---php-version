@@ -9,3 +9,4 @@ data.sql/
 .htaccess
 changelog.txt
 errorlog.html
+vendor

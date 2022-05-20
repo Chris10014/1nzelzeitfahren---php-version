@@ -49,4 +49,40 @@ class Athletes extends Controller
         $this->_view->render('athletes/contact');
         $this->_view->render('footer');
     }
+
+    public function certificate() {
+
+        $data['title'] = 'Urkunde';
+
+        $data['lastName'] = $_GET['lastName'];
+        $data['firstName'] = $_GET['firstName'];
+        $data['team'] = $_GET['team'];
+        $data['time'] = date("H", strtotime($_GET['time'])) . "h "
+        . date("i", strtotime($_GET['time'])) . "m "
+        . date("s", strtotime($_GET['time'])) . "s";
+        $data['rank'] = $_GET['rank'];
+        switch ($_GET['gender']) {
+            case "W":
+                $data['gender'] = "Frauen";
+                break;
+            case "M":
+                $data['gender'] = "Männer";
+                break;
+            case "D":
+                $data['gender'] = "Divers";
+                break;
+
+            default:
+                $data['gender'] = "";
+        } 
+        $data['date'] = $_GET['date'];
+
+        if(isset($_GET['teamCompetition']) && $_GET['teamCompetition'] == 1) {
+            $data['teamCompetition'] = $_GET['teamCompetition']; 
+        } else {
+             $data['teamCompetition'] = "";
+        }
+    
+        $this->_view->render('athletes/certificate', $data);      
+    }
 }

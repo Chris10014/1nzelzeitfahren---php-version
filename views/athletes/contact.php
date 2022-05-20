@@ -2,7 +2,7 @@
     <div class="container">
         <h1>Kontakt</h1>
     </div><!-- / container -->
-    </header>
+</header>
     <main>
         <div class="container">
             <p>
