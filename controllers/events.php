@@ -120,7 +120,7 @@ class Events extends Controller
                     $time = strtotime($brutto_finish_time) - strtotime($start_time);
                     $netto_finish_time = gmdate("H:i:s", $time);
                 } else {
-                    $netto_finish_time = null;
+                    $netto_finish_time = "00:00:00";
                 }
 
                 // Update user have events
