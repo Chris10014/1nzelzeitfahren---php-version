@@ -114,7 +114,7 @@ class Events extends Controller
                 $user_id = $_REQUEST['userId'][$i];
                 $start_time = $_REQUEST['startTime'][$i];
                 $number = $_REQUEST['number'][$i];
-                $brutto_finish_time = $_REQUEST['bruttoFinishTime'][$i];
+                $brutto_finish_time = gmdate("H:i:s", strtotime($_REQUEST['bruttoFinishTime'][$i]));
 
                 if (isset($brutto_finish_time) && strtotime($brutto_finish_time) > strtotime($start_time)) {
                     $time = strtotime($brutto_finish_time) - strtotime($start_time);
