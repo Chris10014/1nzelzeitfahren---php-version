@@ -43,7 +43,7 @@
                         <th class="d-none d-md-table-cell">AK</th>
                         <th class="d-none d-sm-table-cell">Verein</th>
                         <th>Zeit</th>
-                        <th>Urkunde</th>
+                        <th class="text-center">Urkunde</th>
                     </tr>
                 </thead>
                 <tbody id="resultsTableBody">
@@ -78,8 +78,8 @@
                                         . "&rank=" . $rank
                                         . "&time=" . $time
                                         . "&team=" . $res['team_name']
-                                        . "&date=" . strftime("%d.%m.%Y", strtotime($data['event']['date'])) .
-                                        "'><i class='fas fa-file-pdf fa-lg'></i>
+                                        . "&date=" . strftime("%d.%m.%Y", strtotime($data['event']['date'])) 
+                                        . "'><i class='fas fa-file-pdf fa-lg tsge-red'></i>
                                          </a>
                                          </td>
                                     </tr>";
