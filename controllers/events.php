@@ -88,28 +88,35 @@ class Events extends Controller
 
         // validate start numbers
         $numbers_validated = array_unique($_REQUEST['number']); // remove duplicate values from array
-        
+       
         If($numbers_validated != $_REQUEST['number']) {// has array changed
             Message::set('Startnummern enthalten Dubletten.', 'warning');
+            echo "Startnummern enthalten Dubletten.";
             header("Location: " . DIR . "events/editResults/" . $event_date_id);
             return;
+        } else {
+            //do nothing
         }
 
         $startTimes_validated = array_unique($_REQUEST['startTime']); // remove duplicate values from array
+       
+        
         if ($startTimes_validated != $_REQUEST['startTime']) {// has array changed
             Message::set('Startzeiten enthalten Dubletten.', 'warning');
             header("Location: " . DIR . "events/editResults/" . $event_date_id);
             return;
+        } else {
+            
         }
 
-        if (count($_REQUEST['startTime']) == $arrayLength && count($_REQUEST['number']) == $arrayLength && count($_REQUEST['bruttoFinishTime']) == $arrayLength) { // all array have the same number of items
+        if (count($_REQUEST['startTime']) == $arrayLength && count($_REQUEST['number']) == $arrayLength) { // all array have the same number of items
             for ($i = 0; $i < $arrayLength; $i++) {
                 $user_id = $_REQUEST['userId'][$i];
                 $start_time = $_REQUEST['startTime'][$i];
                 $number = $_REQUEST['number'][$i];
                 $brutto_finish_time = $_REQUEST['bruttoFinishTime'][$i];
 
-                if (strtotime($brutto_finish_time) > strtotime($start_time)) {
+                if (isset($brutto_finish_time) && strtotime($brutto_finish_time) > strtotime($start_time)) {
                     $time = strtotime($brutto_finish_time) - strtotime($start_time);
                     $netto_finish_time = gmdate("H:i:s", $time);
                 } else {

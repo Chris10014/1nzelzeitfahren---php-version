@@ -75,7 +75,7 @@ class Utils
             case "W":
                 return "Frauen";
                 break;
-            case "O":
+            case "D":
                 return "Diverse";
                 break;
         }

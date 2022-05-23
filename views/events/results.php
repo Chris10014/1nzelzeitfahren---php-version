@@ -50,15 +50,16 @@
                     <?php
                     $gender = GENDER;
                     for ($i = 0; $i < count($gender); $i++) {
-                        if (count($data['results' . $gender[$i]]) > 0) {
-
+                        if (count($data['results' . $gender[$i]]) > 0) {    
+                
                             $rankCounter = 0;
                             echo "<tr><td colspan='6'>";
                             echo Utils::fullGender($gender[$i]);
 
                             echo "</td></tr>";
                             foreach ($data['results' . $gender[$i]] as $res) {
-                                if (isset($res['netto_finish_time']) && $res['netto_finish_time'] != "00:00:00") {
+                                
+                                if (isset($res['netto_finish_time']) && ($res['netto_finish_time'] != "00:00:00.000" && $res['netto_finish_time'] != "00:00:00")) {
                                     $rankCounter++;
                                     $rank = $rankCounter;
                                     $time = $res['netto_finish_time'];
@@ -71,7 +72,11 @@
                                         <td class='d-none d-md-table-cell'>" . $res['gender'] . " " . $ageGroup . "</td>
                                         <td class='d-none d-sm-table-cell'>" . htmlentities($res['team_name']) . "</td>
                                         <td>" . date("H:i:s", strtotime($time)) . "</td>
-                                        <td class='text-center'> <a href='" . DIR . "athletes/certificate?firstName="
+                                        <td class='text-center'>";
+
+                                        //display certificate only when finishtime is present
+                                        if(date("H:i:s", strtotime($time)) != '00:00:00') { 
+                                         echo "<a href='" . DIR . "athletes/certificate?firstName="
                                         . $res['first_name']
                                         . "&lastName=" . $res['last_name']
                                         . "&gender=" . $gender[$i]
@@ -80,8 +85,11 @@
                                         . "&team=" . $res['team_name']
                                         . "&date=" . strftime("%d.%m.%Y", strtotime($data['event']['date'])) 
                                         . "'><i class='fas fa-file-pdf fa-lg tsge-red'></i>
-                                         </a>
-                                         </td>
+                                         </a>"; } else {
+                                            null;
+                                         };
+
+                                         "</td>
                                     </tr>";
                                 }
                             }
