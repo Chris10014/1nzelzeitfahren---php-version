@@ -58,13 +58,18 @@ Berechnet die Altersklasse auf Basis des Geburtsjahres
 @param int va grid Jahreszuschnitt der Alterklassen (10er oder 5er Schritte)
 @return int Alterklasse 
 */
-function agegroup(yearOfBirth, grid) {
-  var age = new Date().getFullYear() - yearOfBirth;
+function agegroup(eventDate, yearOfBirth, grid) {
+  
+  var age = new Date(eventDate).getFullYear() - yearOfBirth;
 
-  if (grid == 10) {
-    return Math.floor(age / 10) * 10;
+  if (age >= 20) {
+    if (grid == 10) {
+      return Math.floor(age / 10) * 10;
+    } else {
+      return (Math.floor((age / 10) * 2) / 2) * 10;
+    }
   } else {
-    return (Math.floor((age / 10) * 2) / 2) * 10;
+    return "Jugend";
   }
 }
 

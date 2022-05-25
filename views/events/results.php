@@ -160,6 +160,7 @@
     // Vereinsfilter für Ergebnisse
     $(document).ready(function() {
         var eventDate = '<?= $data['event']['date'] ?>'
+                
         var date = new Intl.DateTimeFormat("de-DE", {
             year: "numeric",
             month: "short",
@@ -200,8 +201,9 @@
                                     } else {
                                         var teamName = "";
                                     }
-                                    ageGroup = agegroup(item.year_of_birth, "<?= AGEGROUPS ?>");
-
+                                    
+                                    ageGroup = agegroup(eventDate, item.year_of_birth, "<?= AGEGROUPS ?>");
+                                    
                                     tableBody += "<tr><td class='d-none d-md-table-cell'>" + item.number + "</td>";
                                     tableBody += "<td>" + rank + "</td>";
                                     tableBody +=
