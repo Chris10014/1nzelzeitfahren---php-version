@@ -96,7 +96,7 @@
                                             . "&time=" . $time
                                             . "&team=" . $res['team_name']
                                             . "&date=" . strftime("%d.%m.%Y", strtotime($data['event']['date']))
-                                            . "'><i class='fas fa-file-pdf fa-lg tsge-red'></i>
+                                            . "' target='_blank'><i class='fas fa-file-pdf fa-lg tsge-red'></i>
                                          </a>";
                                     } else {
                                         null;
@@ -160,7 +160,7 @@
     // Vereinsfilter für Ergebnisse
     $(document).ready(function() {
         var eventDate = '<?= $data['event']['date'] ?>'
-                
+
         var date = new Intl.DateTimeFormat("de-DE", {
             year: "numeric",
             month: "short",
@@ -201,9 +201,9 @@
                                     } else {
                                         var teamName = "";
                                     }
-                                    
+
                                     ageGroup = agegroup(eventDate, item.year_of_birth, "<?= AGEGROUPS ?>");
-                                    
+
                                     tableBody += "<tr><td class='d-none d-md-table-cell'>" + item.number + "</td>";
                                     tableBody += "<td>" + rank + "</td>";
                                     tableBody +=
@@ -219,7 +219,7 @@
                                         finishTime + "&team=" +
                                         teamName + "&gender=" +
                                         gender + "&teamCompetition=" +
-                                        teamCompetition + "'><i class='fas fa-file-pdf fa-lg tsge-red'></i></a></td></tr>";
+                                        teamCompetition + "' target='_blank'><i class='fas fa-file-pdf fa-lg tsge-red'></i></a></td></tr>";
                                 });
                             }
                         }
