@@ -53,16 +53,28 @@
                         if (count($data['results' . $gender[$i]]) > 0) {    
                 
                             $rankCounter = 0;
+                            $lastRankCounter = 0; //to handle equal finishtimes
                             echo "<tr><td colspan='6'>";
                             echo Utils::fullGender($gender[$i]);
 
                             echo "</td></tr>";
+
+                            $lastNettoFinishtime = "00:00:00"; //to handle equal finishtimes
+
                             foreach ($data['results' . $gender[$i]] as $res) {
                                 
                                 if (isset($res['netto_finish_time']) && ($res['netto_finish_time'] != "00:00:00.000" && $res['netto_finish_time'] != "00:00:00")) {
                                     $rankCounter++;
-                                    $rank = $rankCounter;
                                     $time = $res['netto_finish_time'];
+
+                                    if($time == $lastNettoFinishtime) { //is the time the same like the one before?
+                                        $rank = $lastRankCounter;
+                                    }else { //if not take the counter as rank
+                                        $rank = $rankCounter;
+                                        $lastRankCounter = $rankCounter;
+                                    }
+
+                                    $lastNettoFinishtime = $time;
 
                                     $ageGroup = Utils::ageGroup($data['event']['date'], $res['year_of_birth']);
                                     echo "<tr>

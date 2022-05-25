@@ -98,6 +98,14 @@ class Events extends Controller
             //do nothing
         }
 
+        //check for all starting times
+        for($i = 0; $i < $arrayLength; $i++) {
+             
+            if(!isset($_REQUEST['startTime'][$i]) || $_REQUEST['startTime'][$i] == "") {
+                $_REQUEST['startTime'][$i] = Utils::startingTime($_REQUEST['number'][$i]); 
+            }            
+        }
+
         $startTimes_validated = array_unique($_REQUEST['startTime']); // remove duplicate values from array
        
         
@@ -110,17 +118,21 @@ class Events extends Controller
         }
 
         if (count($_REQUEST['startTime']) == $arrayLength && count($_REQUEST['number']) == $arrayLength) { // all array have the same number of items
+        
             for ($i = 0; $i < $arrayLength; $i++) {
                 $user_id = $_REQUEST['userId'][$i];
                 $start_time = $_REQUEST['startTime'][$i];
                 $number = $_REQUEST['number'][$i];
-                $brutto_finish_time = gmdate("H:i:s", strtotime($_REQUEST['bruttoFinishTime'][$i]));
-
-                if (isset($brutto_finish_time) && strtotime($brutto_finish_time) > strtotime($start_time)) {
-                    $time = strtotime($brutto_finish_time) - strtotime($start_time);
-                    $netto_finish_time = gmdate("H:i:s", $time);
+                if(isset($_REQUEST['bruttoFinishTime'][$i]) && $_REQUEST['bruttoFinishTime'][$i] !== "") {
+                    $brutto_finish_time = date("H:i:s", strtotime($_REQUEST['bruttoFinishTime'][$i]));
                 } else {
-                    $netto_finish_time = "00:00:00";
+                    $brutto_finish_time = null; //date("H:i:s", strtotime("00:00:00"));
+                }          
+                
+                if (isset($brutto_finish_time) && $brutto_finish_time !== "00:00:00" && strtotime($brutto_finish_time) > strtotime($start_time)) {
+                    $netto_finish_time = Utils::timeDiff($_REQUEST['startTime'][$i], $_REQUEST['bruttoFinishTime'][$i]);
+                } else {
+                    $netto_finish_time = null;
                 }
 
                 // Update user have events
@@ -135,6 +147,7 @@ class Events extends Controller
                 $newUserHaveEvent = new Users_have_events_Model();
                 $newUserHaveEvent->updateColumns($data, $where);
             } // / for loop
+
             session_destroy(); // logout admin
 
             header("Location:" . DIR . "/events/results/" . $event_date_id);

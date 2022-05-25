@@ -100,6 +100,39 @@ class Utils
     
         mail($to, $subject, $txt, $headers);
     }
+
+    /**
+     * Berechnet die Dauer zwischen zwei Zeiten startTime und bruttoFinishTime
+     * @param date("H:i:s") $startTime Startzeit 
+     * @param date("H:i:s") $bruttoFinishTime Zielzeit
+     * @return date("H:i:s") Zeitspanne zwischen startTime und bruttoFinishTime
+     */
+
+    public static function timeDiff($startTime, $bruttoFinishTime)
+    {
+
+        list($hours, $minutes, $seconds) = explode(':', $startTime);;
+        $startTimestamp = mktime($hours, $minutes, $seconds);
+
+        list($hours, $minutes, $seconds) = explode(':', $bruttoFinishTime);
+        $endTimestamp = mktime($hours, $minutes, $seconds);
+
+        $seconds_diff = $endTimestamp - $startTimestamp;
+
+        return gmdate("H:i:s", $seconds_diff);//($hours . ":" . $minutes . ": " . $seconds);
+    }
+
+    /**
+     * Berechnet die Startzeit
+     * @param integer $startNumber Nummer des Starplatzes 
+     * @return gmdate("H:i:s") Startzeit in hh:mm:ss
+     */
+    public static function startingTime($startNumber) {
+        $relativeStartTime = ($startNumber - 1) * START_DISTANCES;
+        
+        return gmdate("H:i:s", $relativeStartTime);
+    }
+
 }
 
 

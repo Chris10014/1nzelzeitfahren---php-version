@@ -67,7 +67,7 @@
                 <input type='number' class='form-control' name='number[]' id='number' value='" . $number . "'>
                 </td> 
                 <td>
-                 <input type='time' class='form-control' step='1' name='startTime[]' id='startTime' placeholder='HH:MM:SS' value='" . $part['start_time'] . "'>  
+                 <input type='time' class='form-control' step='' name='startTime[]' id='startTime' placeholder='HH:MM:SS' value='" . $part['start_time'] . "'>  
                 </td> 
                 <td>"
                                         . $estimatedFinishTime . "
@@ -76,7 +76,7 @@
                 <td>" . $part['gender'] . " " . $ageGroup . "</td>
                 <td>" . htmlentities($part['team_name']) . "</td>
                 <td>                           
-                    <input type='time' class='form-control' step='1' name='bruttoFinishTime[]' id='bruttoFinishTime' placeholder='HH:MM:SS' value='" . $bruttoFinishTime . "'>  
+                    <input type='time' class='form-control' step='1' name='bruttoFinishTime[]' id='bruttoFinishTime' placeholder='00:00:00' value='" . $bruttoFinishTime . "'>  
                 </td>
                 </tr>
                 
