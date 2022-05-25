@@ -50,8 +50,8 @@
                     <?php
                     $gender = GENDER;
                     for ($i = 0; $i < count($gender); $i++) {
-                        if (count($data['results' . $gender[$i]]) > 0) {    
-                
+                        if (count($data['results' . $gender[$i]]) > 0) {
+
                             $rankCounter = 0;
                             $lastRankCounter = 0; //to handle equal finishtimes
                             echo "<tr><td colspan='6'>";
@@ -62,14 +62,14 @@
                             $lastNettoFinishtime = "00:00:00"; //to handle equal finishtimes
 
                             foreach ($data['results' . $gender[$i]] as $res) {
-                                
+
                                 if (isset($res['netto_finish_time']) && ($res['netto_finish_time'] != "00:00:00.000" && $res['netto_finish_time'] != "00:00:00")) {
                                     $rankCounter++;
                                     $time = $res['netto_finish_time'];
 
-                                    if($time == $lastNettoFinishtime) { //is the time the same like the one before?
+                                    if ($time == $lastNettoFinishtime) { //is the time the same like the one before?
                                         $rank = $lastRankCounter;
-                                    }else { //if not take the counter as rank
+                                    } else { //if not take the counter as rank
                                         $rank = $rankCounter;
                                         $lastRankCounter = $rankCounter;
                                     }
@@ -86,22 +86,23 @@
                                         <td>" . date("H:i:s", strtotime($time)) . "</td>
                                         <td class='text-center'>";
 
-                                        //display certificate only when finishtime is present
-                                        if(date("H:i:s", strtotime($time)) != '00:00:00') { 
-                                         echo "<a href='" . DIR . "athletes/certificate?firstName="
-                                        . $res['first_name']
-                                        . "&lastName=" . $res['last_name']
-                                        . "&gender=" . $gender[$i]
-                                        . "&rank=" . $rank
-                                        . "&time=" . $time
-                                        . "&team=" . $res['team_name']
-                                        . "&date=" . strftime("%d.%m.%Y", strtotime($data['event']['date'])) 
-                                        . "'><i class='fas fa-file-pdf fa-lg tsge-red'></i>
-                                         </a>"; } else {
-                                            null;
-                                         };
+                                    //display certificate only when finishtime is present
+                                    if (date("H:i:s", strtotime($time)) != '00:00:00') {
+                                        echo "<a href='" . DIR . "athletes/certificate?firstName="
+                                            . $res['first_name']
+                                            . "&lastName=" . $res['last_name']
+                                            . "&gender=" . $gender[$i]
+                                            . "&rank=" . $rank
+                                            . "&time=" . $time
+                                            . "&team=" . $res['team_name']
+                                            . "&date=" . strftime("%d.%m.%Y", strtotime($data['event']['date']))
+                                            . "'><i class='fas fa-file-pdf fa-lg tsge-red'></i>
+                                         </a>";
+                                    } else {
+                                        null;
+                                    };
 
-                                         "</td>
+                                    "</td>
                                     </tr>";
                                 }
                             }
@@ -166,7 +167,7 @@
         }).format(new Date(Date.parse(eventDate)))
 
         $("#team").keyup(function() {
-           
+
             $.getJSON(
                 '<?= DIR ?>events/resultsPerTeam/<?= $data['eventDateId'] ?>/' + $("#team").val(),
                 function(data) {
@@ -216,7 +217,7 @@
                                         finishTime + "&team=" +
                                         teamName + "&gender=" +
                                         gender + "&teamCompetition=" +
-                                        teamCompetition + "'><i class='fas fa-file-pdf fa-lg'></i></a></td></tr>";
+                                        teamCompetition + "'><i class='fas fa-file-pdf fa-lg tsge-red'></i></a></td></tr>";
                                 });
                             }
                         }
