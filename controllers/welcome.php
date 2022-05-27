@@ -17,6 +17,7 @@ class Welcome extends Controller
            
                 $_SESSION['eventId'] = $event["event_id"];
                 $_SESSION['eventDate'] = $event["date"];
+                $_SESSION['upcomingEventDate'] = $event["date"];
             
         } else {
             $_SESSION['eventId'] = null;
