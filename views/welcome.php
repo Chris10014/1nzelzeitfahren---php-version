@@ -1,11 +1,6 @@
 
 
 <main>
-    <!-- <header>
-        <div class="text-center headprint">
-            <img class="m-3" src="<?= DIR ?>static/img/racelogos/1zFSchriftzugGeradeTraining_white-min.svg" alt="1zF" width-max="100%">
-        </div>
-    </header> -->
     <div class="container">
         <div class="container">
             <p><?= Message::show() ?></p>
@@ -67,7 +62,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <p><img class="headprint mt-5" src="<?= DIR ?>static/img/racelogos/winnerWheel_2021.png" alt="Siegertafel" width-max="100%"></p>
+                <p><img class="headprint mt-5" src="<?= DIR ?>static/img/racelogos/winnerWheel_2022.png" alt="Siegertafel" width-max="100%"></p>
             </div>
         </div>
 </main>
