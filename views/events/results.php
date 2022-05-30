@@ -4,10 +4,12 @@
         <div class="mb-4">
             <?php
             foreach (array_reverse($data["allEventDates"]) as $eventDate) {
+                if(strtotime($eventDate['date']) <= strtotime(date("Y-m-d"))) { //Show only existing results or nearby
                 echo "<a class='btn btn-light m-1 js-year-btn' id='$eventDate[id]' role='button' href='";
                 echo DIR;
                 echo  "events/results/", $eventDate['id'], "'>";
                 echo  date("Y", strtotime($eventDate['date'])), "</a>";
+                }
             }
             ?>
         </div>
