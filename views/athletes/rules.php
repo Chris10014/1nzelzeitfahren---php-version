@@ -52,7 +52,7 @@
                         } else {
                             echo "noch nicht terminiert";
                         } ?> <br>
-                Start: erster Start erfolgt um 8:00h (Änderungen vorbehalten). Weitere Startzeiten bitte der Teilnehmerliste entnehmen.<br>
+                Start: erster Start erfolgt um 8:30h (Änderungen vorbehalten). Weitere Startzeiten bitte der Teilnehmerliste entnehmen.<br>
                 Ort: Ortsausgang Vockenhausen in Richtung Ehlhalten<br><br>
                 Gemeinsames Frühstück am Anschluss (auf eigene Rechnung).
             </p>
